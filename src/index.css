@@ -1,35 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  /* Civic palette: deep ink-navy primary, marigold accent, warm paper background */
-  --color-ink-950: #10161f;
-  --color-ink-900: #16202e;
-  --color-ink-800: #1f2f45;
-  --color-ink-700: #2a4260;
-  --color-ink-600: #375377;
-  --color-ink-500: #4a6b93;
+  /* Cool near-black navy — tech UI base */
+  --color-ink-950: #0a0e17;
+  --color-ink-900: #0f1420;
+  --color-ink-800: #171e2e;
+  --color-ink-700: #212a3d;
+  --color-ink-600: #2d3850;
+  --color-ink-500: #3d4a68;
 
-  --color-paper-50: #fbf9f4;
-  --color-paper-100: #f5f1e8;
-  --color-paper-200: #ece5d4;
-  --color-paper-300: #ddd2b8;
+  --color-paper-50: #fafbfc;
+  --color-paper-100: #f1f3f6;
+  --color-paper-200: #e4e8ee;
+  --color-paper-300: #d1d7e0;
 
-  --color-marigold-400: #f0ab3d;
-  --color-marigold-500: #e2932a;
-  --color-marigold-600: #c77a1c;
+  /* Indigo accent — used sparingly for CTAs/links/glow, not everywhere */
+  --color-accent-400: #818cf8;
+  --color-accent-500: #6366f1;
+  --color-accent-600: #4f46e5;
 
-  --color-ash-500: #756f63;
-  --color-ash-600: #5a544a;
+  --color-ash-500: #64748b;
+  --color-ash-600: #475569;
 
-  /* Category colors — richer/more muted than default Tailwind hues */
-  --color-cat-health: #b8433a;
-  --color-cat-food: #c17a2e;
-  --color-cat-water: #2f6f8f;
-  --color-cat-shelter: #6f4f8e;
-  --color-cat-education: #3a7d5c;
+  /* Category colors — vibrant, saturated, distinguishable at a glance */
+  --color-cat-health: #ef4444;
+  --color-cat-food: #f59e0b;
+  --color-cat-water: #0ea5e9;
+  --color-cat-shelter: #8b5cf6;
+  --color-cat-education: #10b981;
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
 }
 
 html, body, #root {
@@ -45,6 +47,15 @@ body {
 
 .font-display {
   font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.bg-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 .leaflet-container {

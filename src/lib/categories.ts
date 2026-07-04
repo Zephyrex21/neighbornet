@@ -21,9 +21,9 @@ export const CATEGORY_META: Record<
   Category,
   { label: string; color: string; icon: LucideIcon }
 > = {
-  health: { label: "Health", color: "#b8433a", icon: Stethoscope },
-  food: { label: "Food", color: "#c17a2e", icon: UtensilsCrossed },
-  water: { label: "Water", color: "#2f6f8f", icon: Droplet },
-  shelter: { label: "Shelter", color: "#6f4f8e", icon: Home },
-  education: { label: "Education", color: "#3a7d5c", icon: BookOpen },
+  health: { label: "Health", color: "#ef4444", icon: Stethoscope },
+  food: { label: "Food", color: "#f59e0b", icon: UtensilsCrossed },
+  water: { label: "Water", color: "#0ea5e9", icon: Droplet },
+  shelter: { label: "Shelter", color: "#8b5cf6", icon: Home },
+  education: { label: "Education", color: "#10b981", icon: BookOpen },
 };

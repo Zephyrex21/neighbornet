@@ -14,7 +14,7 @@ export function Footer({
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-marigold-400 text-ink-950">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent-500 text-white">
                 <MapPin size={14} strokeWidth={2.5} />
               </span>
               <span className="font-display text-[1.1rem] font-semibold text-white">
@@ -84,7 +84,7 @@ export function Footer({
             <p className="mt-3 text-[0.85rem] leading-relaxed text-paper-300/80">
               Ctrl+V Hackathon 2026 — theme: Access.
             </p>
-            <p className="mt-3 text-[0.85rem] leading-relaxed text-paper-300/50">
+            <p className="mt-3 font-mono text-[0.78rem] leading-relaxed text-paper-300/50">
               React · TypeScript · Firebase · Leaflet
             </p>
           </div>

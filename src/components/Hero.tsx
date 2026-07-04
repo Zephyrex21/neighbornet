@@ -8,57 +8,70 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
 
   return (
     <>
-      <section id="top" className="mx-auto max-w-7xl px-5 pt-14 pb-10 sm:px-8 sm:pt-20 sm:pb-14">
-        <div className="max-w-2xl">
-          <span className="inline-flex items-center rounded-full bg-ink-900/5 px-3 py-1 text-[0.78rem] font-semibold uppercase tracking-wide text-ink-700">
-            New Delhi · Community-verified
-          </span>
-          <h1 className="mt-5 font-display text-[2.6rem] font-medium leading-[1.08] tracking-tight text-ink-950 sm:text-[3.4rem]">
-            Essential services,{" "}
-            <span className="italic text-ink-700">right where you are.</span>
-          </h1>
-          <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-ash-600">
-            NeighborNet maps free clinics, food banks, water points,
-            shelters, and tutoring near you — and lets anyone add a new
-            one in under a minute. No login, no gatekeeping.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <button
-              onClick={scrollToExplore}
-              className="rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-ink-800"
-            >
-              Explore the map
-            </button>
-            <button
-              onClick={onAdd}
-              className="rounded-full border border-ink-800/15 bg-white px-6 py-3 text-sm font-medium text-ink-800 shadow-sm transition hover:border-ink-800/30"
-            >
-              Add a resource
-            </button>
-          </div>
-        </div>
+      <section
+        id="top"
+        className="relative overflow-hidden bg-gradient-to-b from-ink-950 to-ink-900"
+      >
+        <div className="bg-grid absolute inset-0 opacity-60" />
+        <div className="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-accent-500/25 blur-[100px]" />
+        <div className="pointer-events-none absolute top-20 right-1/5 h-64 w-64 rounded-full bg-sky-500/20 blur-[100px]" />
 
-        <div className="mt-10 flex flex-wrap gap-2.5">
-          {CATEGORIES.map((cat) => {
-            const meta = CATEGORY_META[cat];
-            const Icon = meta.icon;
-            return (
-              <span
-                key={cat}
-                className="flex items-center gap-1.5 rounded-full border border-ink-800/10 bg-white px-3 py-1.5 text-[0.8rem] font-medium text-ash-600 shadow-sm"
-              >
-                <Icon size={14} style={{ color: meta.color }} strokeWidth={2.25} />
-                {meta.label}
+        <div className="relative mx-auto max-w-7xl px-5 pt-16 pb-12 sm:px-8 sm:pt-24 sm:pb-16">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[0.72rem] font-medium uppercase tracking-wider text-paper-300/80">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
-            );
-          })}
+              Live · New Delhi
+            </span>
+
+            <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-white sm:text-[3.5rem]">
+              Essential services,{" "}
+              <span className="bg-gradient-to-r from-accent-400 to-sky-400 bg-clip-text text-transparent">
+                right where you are.
+              </span>
+            </h1>
+            <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-paper-300/70">
+              NeighborNet maps free clinics, food banks, water points,
+              shelters, and tutoring near you — and lets anyone add a new
+              one in under a minute. No login, no gatekeeping.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <button
+                onClick={scrollToExplore}
+                className="rounded-lg bg-accent-500 px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-6px_rgba(99,102,241,0.8)] transition hover:bg-accent-600"
+              >
+                Explore the map
+              </button>
+              <button
+                onClick={onAdd}
+                className="rounded-lg border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur transition hover:bg-white/10"
+              >
+                Add a resource
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-2.5">
+            {CATEGORIES.map((cat) => {
+              const meta = CATEGORY_META[cat];
+              const Icon = meta.icon;
+              return (
+                <span
+                  key={cat}
+                  className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[0.75rem] font-medium uppercase tracking-wide text-paper-300/80 backdrop-blur"
+                >
+                  <Icon size={14} style={{ color: meta.color }} strokeWidth={2.25} />
+                  {meta.label}
+                </span>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <section
-        id="how-it-works"
-        className="border-y border-ink-800/8 bg-paper-100/60"
-      >
+      <section id="how-it-works" className="border-b border-ink-800/8 bg-paper-100/60">
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-14 md:grid-cols-3">
           <Step
             icon={<Search size={20} strokeWidth={2.25} />}
@@ -92,10 +105,10 @@ function Step({
 }) {
   return (
     <div>
-      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-900 text-marigold-400">
+      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent-500 text-white shadow-[0_0_20px_-6px_rgba(99,102,241,0.6)]">
         {icon}
       </span>
-      <h3 className="mt-4 font-display text-lg font-medium text-ink-950">
+      <h3 className="mt-4 font-display text-lg font-semibold text-ink-950">
         {title}
       </h3>
       <p className="mt-1.5 text-[0.9rem] leading-relaxed text-ash-600">

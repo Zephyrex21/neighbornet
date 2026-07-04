@@ -61,17 +61,17 @@ function App() {
       <section id="explore" className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-display text-2xl font-medium text-ink-950 sm:text-3xl">
+            <h2 className="font-display text-2xl font-semibold text-ink-950 sm:text-3xl">
               Explore the map
             </h2>
-            <p className="mt-1 text-[0.9rem] text-ash-500">
+            <p className="mt-1 font-mono text-[0.82rem] text-ash-500">
               {filtered.length} resource{filtered.length !== 1 ? "s" : ""}{" "}
               {selectedCategories.length < CATEGORIES.length ? "matching your filters" : "in New Delhi"}
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 rounded-t-3xl border border-b-0 border-ink-800/10 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 rounded-t-2xl border border-b-0 border-ink-800/10 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex-1 max-w-md">
             <SearchBar value={search} onChange={setSearch} />
           </div>
@@ -84,7 +84,7 @@ function App() {
           />
         </div>
 
-        <div className="h-[70vh] overflow-hidden rounded-b-3xl border border-t-0 border-ink-800/10 shadow-sm">
+        <div className="h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm">
           {loading ? (
             <div className="flex h-full items-center justify-center text-ash-500">
               Loading resources…
@@ -99,7 +99,7 @@ function App() {
         <button
           onClick={locate}
           disabled={locating}
-          className="mt-4 flex items-center gap-1.5 rounded-full border border-ink-800/15 bg-white px-4 py-2 text-sm font-medium text-ink-800 shadow-sm transition hover:border-ink-800/30 disabled:opacity-50"
+          className="mt-4 flex items-center gap-1.5 rounded-lg border border-ink-800/15 bg-white px-4 py-2 text-sm font-medium text-ink-800 shadow-sm transition hover:border-ink-800/30 disabled:opacity-50"
         >
           <MapPin size={15} />
           {locating ? "Locating…" : "Use my location"}

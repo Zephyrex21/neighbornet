@@ -22,9 +22,9 @@ function PinPicker({
 }
 
 const inputClass =
-  "w-full rounded-xl border border-ink-800/12 px-3.5 py-2.5 text-sm text-ink-950 placeholder:text-ash-500 transition focus:outline-none focus:ring-2 focus:ring-ink-800/20 focus:border-ink-800/30";
+  "w-full rounded-lg border border-ink-800/12 px-3.5 py-2.5 text-sm text-ink-950 placeholder:text-ash-500 transition focus:outline-none focus:ring-2 focus:ring-accent-500/30 focus:border-accent-500/50";
 
-const labelClass = "mb-1.5 block text-[0.8rem] font-semibold text-ink-800";
+const labelClass = "mb-1.5 block font-mono text-[0.72rem] font-semibold uppercase tracking-wide text-ink-700";
 
 export function AddResourceModal({
   onClose,
@@ -77,7 +77,7 @@ export function AddResourceModal({
 
   return (
     <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-paper-50 shadow-2xl">
+      <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-paper-50 shadow-2xl">
         <div className="flex items-center justify-between border-b border-ink-800/10 px-6 py-5">
           <h2 className="font-display text-xl font-semibold text-ink-950">
             Add a resource
@@ -114,7 +114,7 @@ export function AddResourceModal({
                     key={cat}
                     type="button"
                     onClick={() => setCategory(cat)}
-                    className={`flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all ${
+                    className={`flex items-center gap-1.5 rounded-lg border px-3.5 py-1.5 font-mono text-[0.8rem] font-medium uppercase tracking-wide transition-all ${
                       active
                         ? "border-transparent text-white shadow-sm"
                         : "border-ink-800/12 text-ash-600"
@@ -131,7 +131,7 @@ export function AddResourceModal({
 
           <div>
             <label className={labelClass}>Pin the location (click on the map)</label>
-            <div className="h-56 rounded-2xl overflow-hidden border border-ink-800/12">
+            <div className="h-56 rounded-lg overflow-hidden border border-ink-800/12">
               <MapContainer
                 center={userLocation ?? DELHI_CENTER}
                 zoom={13}
@@ -196,20 +196,20 @@ export function AddResourceModal({
             </p>
           </div>
 
-          {error && <p className="text-sm text-cat-health">{error}</p>}
+          {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
 
         <div className="flex justify-end gap-2 border-t border-ink-800/10 px-6 py-4">
           <button
             onClick={onClose}
-            className="rounded-full px-4 py-2 text-sm font-medium text-ash-600 transition hover:bg-ink-800/8"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-ash-600 transition hover:bg-ink-800/8"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
             disabled={!canSubmit}
-            className="rounded-full bg-ink-900 px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-ink-800 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="rounded-lg bg-accent-500 px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-accent-600 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {submitting ? "Saving…" : "Add resource"}
           </button>
