@@ -19,8 +19,9 @@ Open the local URL. The map should load with an empty state (no pins yet).
 ```
 node seed.mjs
 ```
-This adds ~29 real Delhi essential-service entries (health, food, water,
-shelter, education) to Firestore. Refresh the app — pins should appear.
+This adds 51 real essential-service entries across Delhi NCR (Delhi,
+Gurugram, Noida, Ghaziabad, Faridabad) — health, food, water, shelter,
+education — to Firestore. Refresh the app — pins should appear.
 
 ## 4. Lock down Firestore security rules
 Firebase console → Firestore Database → Rules → paste the contents of

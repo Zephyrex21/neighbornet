@@ -66,7 +66,7 @@ function App() {
             </h2>
             <p className="mt-1 font-mono text-[0.82rem] text-ash-500">
               {filtered.length} resource{filtered.length !== 1 ? "s" : ""}{" "}
-              {selectedCategories.length < CATEGORIES.length ? "matching your filters" : "in New Delhi"}
+              {selectedCategories.length < CATEGORIES.length ? "matching your filters" : "across Delhi NCR"}
             </p>
           </div>
         </div>

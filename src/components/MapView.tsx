@@ -52,7 +52,7 @@ export function MapView({
   return (
     <MapContainer
       center={userLocation ?? DELHI_CENTER}
-      zoom={12}
+      zoom={10}
       scrollWheelZoom
       style={{ height: "100%", width: "100%" }}
     >
