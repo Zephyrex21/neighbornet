@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /resources/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() < 100
+        && request.resource.data.category in
+           ['health','food','water','shelter','education']
+        && request.resource.data.lat is number
+        && request.resource.data.lng is number
+        && request.resource.data.address is string
+        && request.resource.data.address.size() < 200;
+      allow update, delete: if false;
+    }
+  }
+}
