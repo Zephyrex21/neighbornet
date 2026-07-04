@@ -19,7 +19,7 @@ const LIVE_URL = "https://neighbornet-ten.vercel.app/";
 
 function App() {
   const { resources, loading } = useResources();
-  const { location, locate, loading: locating } = useGeolocation();
+  const { location, locate, loading: locating, error: locationError } = useGeolocation();
 
   const [view, setView] = useState<"map" | "list">("map");
   const [selectedCategories, setSelectedCategories] =
@@ -58,7 +58,7 @@ function App() {
       <Navbar onAdd={() => setShowAddModal(true)} githubUrl={GITHUB_URL} />
       <Hero onAdd={() => setShowAddModal(true)} />
 
-      <section id="explore" className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
+      <section id="explore" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-16">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
             <h2 className="font-display text-2xl font-semibold text-ink-950 sm:text-3xl">
@@ -84,7 +84,7 @@ function App() {
           />
         </div>
 
-        <div className="h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm">
+        <div className="relative isolate z-0 h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm">
           {loading ? (
             <div className="flex h-full items-center justify-center text-ash-500">
               Loading resources…
@@ -104,6 +104,11 @@ function App() {
           <MapPin size={15} />
           {locating ? "Locating…" : "Use my location"}
         </button>
+        {locationError && (
+          <p className="mt-2 text-sm text-red-600">
+            Couldn't get your location: {locationError}. You can still browse using search and filters.
+          </p>
+        )}
       </section>
 
       <Footer githubUrl={GITHUB_URL} liveUrl={LIVE_URL} />

@@ -41,8 +41,13 @@ export function subscribeResources(
 }
 
 export async function addResource(resource: NewResource): Promise<void> {
+  // Firestore's addDoc throws if any field value is `undefined` — strip
+  // optional fields that weren't provided instead of sending them as undefined.
+  const clean = Object.fromEntries(
+    Object.entries(resource).filter(([, value]) => value !== undefined)
+  );
   await addDoc(collection(db, COLLECTION), {
-    ...resource,
+    ...clean,
     createdAt: Timestamp.now(),
   });
 }

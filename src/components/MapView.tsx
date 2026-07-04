@@ -69,19 +69,20 @@ export function MapView({
       {resources.map((r) => (
         <Marker key={r.id} position={[r.lat, r.lng]} icon={categoryIcon(r.category)}>
           <Popup>
-            <div style={{ minWidth: 190, fontFamily: "'IBM Plex Sans', sans-serif" }}>
+            <div style={{ minWidth: 190, fontFamily: "'Inter', sans-serif" }}>
               <div
                 style={{
-                  fontFamily: "'Fraunces', serif",
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: 15,
-                  color: "#10161f",
+                  color: "#0a0e17",
                 }}
               >
                 {r.name}
               </div>
               <div
                 style={{
+                  fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 11,
                   fontWeight: 600,
                   textTransform: "uppercase",
@@ -92,16 +93,16 @@ export function MapView({
               >
                 {CATEGORY_META[r.category].label}
               </div>
-              <div style={{ fontSize: 13, color: "#3a4048" }}>{r.address}</div>
+              <div style={{ fontSize: 13, color: "#334155" }}>{r.address}</div>
               {r.hours && (
-                <div style={{ fontSize: 12, color: "#756f63", marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
-                  <Clock size={12} color="#756f63" />
+                <div style={{ fontSize: 12, color: "#64748b", marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Clock size={12} color="#64748b" />
                   {r.hours}
                 </div>
               )}
               {r.contact && (
-                <div style={{ fontSize: 12, color: "#756f63", marginTop: 2, display: "flex", alignItems: "center", gap: 5 }}>
-                  <Phone size={12} color="#756f63" />
+                <div style={{ fontSize: 12, color: "#64748b", marginTop: 2, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Phone size={12} color="#64748b" />
                   {r.contact}
                 </div>
               )}

@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
-import { X } from "lucide-react";
+import { divIcon } from "leaflet";
+import { renderToStaticMarkup } from "react-dom/server";
+import { X, MapPin } from "lucide-react";
 import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 import { addResource } from "../lib/resources";
 
 const DELHI_CENTER: [number, number] = [28.6139, 77.209];
+
+const pickerIcon = divIcon({
+  className: "",
+  html: `<div style="display:flex;align-items:center;justify-content:center;transform:translateY(-50%);filter:drop-shadow(0 2px 4px rgba(16,22,31,0.4));">
+    ${renderToStaticMarkup(<MapPin size={32} color="#4f46e5" fill="#818cf8" strokeWidth={1.75} />)}
+  </div>`,
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+});
 
 function PinPicker({
   position,
@@ -18,7 +29,7 @@ function PinPicker({
       onPick([e.latlng.lat, e.latlng.lng]);
     },
   });
-  return position ? <Marker position={position} /> : null;
+  return position ? <Marker position={position} icon={pickerIcon} /> : null;
 }
 
 const inputClass =
@@ -46,6 +57,18 @@ export function AddResourceModal({
   const [error, setError] = useState<string | null>(null);
 
   const canSubmit = name.trim() && address.trim() && position && !submitting;
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
 
   const handleSubmit = async () => {
     if (!position) {
@@ -76,8 +99,14 @@ export function AddResourceModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-paper-50 shadow-2xl">
+    <div
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-paper-50 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between border-b border-ink-800/10 px-6 py-5">
           <h2 className="font-display text-xl font-semibold text-ink-950">
             Add a resource
@@ -131,7 +160,7 @@ export function AddResourceModal({
 
           <div>
             <label className={labelClass}>Pin the location (click on the map)</label>
-            <div className="h-56 rounded-lg overflow-hidden border border-ink-800/12">
+            <div className="relative isolate z-0 h-56 rounded-lg overflow-hidden border border-ink-800/12">
               <MapContainer
                 center={userLocation ?? DELHI_CENTER}
                 zoom={13}

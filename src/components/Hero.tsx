@@ -10,7 +10,7 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
     <>
       <section
         id="top"
-        className="relative overflow-hidden bg-gradient-to-b from-ink-950 to-ink-900"
+        className="relative scroll-mt-20 overflow-hidden bg-gradient-to-b from-ink-950 to-ink-900"
       >
         <div className="bg-grid absolute inset-0 opacity-60" />
         <div className="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-accent-500/25 blur-[100px]" />
@@ -71,7 +71,7 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
         </div>
       </section>
 
-      <section id="how-it-works" className="border-b border-ink-800/8 bg-paper-100/60">
+      <section id="how-it-works" className="scroll-mt-20 border-b border-ink-800/8 bg-paper-100/60">
         <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-14 md:grid-cols-3">
           <Step
             icon={<Search size={20} strokeWidth={2.25} />}
