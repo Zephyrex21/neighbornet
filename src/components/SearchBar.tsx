@@ -1,3 +1,5 @@
+import { Search } from "lucide-react";
+
 export function SearchBar({
   value,
   onChange,
@@ -7,9 +9,10 @@ export function SearchBar({
 }) {
   return (
     <div className="relative">
-      <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ash-500">
-        ⌕
-      </span>
+      <Search
+        size={16}
+        className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ash-500"
+      />
       <input
         type="text"
         value={value}

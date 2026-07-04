@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { divIcon } from "leaflet";
 import { useEffect } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { Navigation, Clock, Phone } from "lucide-react";
 import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
 
@@ -8,16 +10,29 @@ const DELHI_CENTER: [number, number] = [28.6139, 77.209];
 
 function categoryIcon(category: Resource["category"]) {
   const meta = CATEGORY_META[category];
+  const Icon = meta.icon;
+  const svg = renderToStaticMarkup(
+    <Icon color="white" size={14} strokeWidth={2.25} />
+  );
   return divIcon({
     className: "",
-    html: `<div style="background:${meta.color};width:28px;height:28px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.4);">
-      <span style="transform:rotate(45deg);font-size:13px;">${meta.icon}</span>
+    html: `<div style="background:${meta.color};width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(16,22,31,0.35);">
+      <div style="transform:rotate(45deg);display:flex;">${svg}</div>
     </div>`,
-    iconSize: [28, 28],
-    iconAnchor: [14, 28],
-    popupAnchor: [0, -28],
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30],
   });
 }
+
+const userIcon = divIcon({
+  className: "",
+  html: `<div style="background:#16202e;width:16px;height:16px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 2px #16202e;display:flex;align-items:center;justify-content:center;">
+    ${renderToStaticMarkup(<Navigation color="white" size={8} fill="white" />)}
+  </div>`,
+  iconSize: [16, 16],
+  iconAnchor: [8, 8],
+});
 
 function RecenterMap({ center }: { center: [number, number] | null }) {
   const map = useMap();
@@ -47,15 +62,7 @@ export function MapView({
       />
       <RecenterMap center={userLocation} />
       {userLocation && (
-        <Marker
-          position={userLocation}
-          icon={divIcon({
-            className: "",
-            html: `<div style="background:#111827;width:16px;height:16px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 2px #111827;"></div>`,
-            iconSize: [16, 16],
-            iconAnchor: [8, 8],
-          })}
-        >
+        <Marker position={userLocation} icon={userIcon}>
           <Popup>You are here</Popup>
         </Marker>
       )}
@@ -87,13 +94,15 @@ export function MapView({
               </div>
               <div style={{ fontSize: 13, color: "#3a4048" }}>{r.address}</div>
               {r.hours && (
-                <div style={{ fontSize: 12, color: "#756f63", marginTop: 4 }}>
-                  🕒 {r.hours}
+                <div style={{ fontSize: 12, color: "#756f63", marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Clock size={12} color="#756f63" />
+                  {r.hours}
                 </div>
               )}
               {r.contact && (
-                <div style={{ fontSize: 12, color: "#756f63" }}>
-                  📞 {r.contact}
+                <div style={{ fontSize: 12, color: "#756f63", marginTop: 2, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Phone size={12} color="#756f63" />
+                  {r.contact}
                 </div>
               )}
             </div>

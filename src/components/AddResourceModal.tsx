@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import { X } from "lucide-react";
 import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 import { addResource } from "../lib/resources";
 
@@ -86,7 +87,7 @@ export function AddResourceModal({
             className="flex h-8 w-8 items-center justify-center rounded-full text-ash-500 transition hover:bg-ink-800/8 hover:text-ink-950"
             aria-label="Close"
           >
-            ✕
+            <X size={18} />
           </button>
         </div>
 
@@ -106,6 +107,7 @@ export function AddResourceModal({
             <div className="flex flex-wrap gap-2">
               {CATEGORIES.map((cat) => {
                 const meta = CATEGORY_META[cat];
+                const Icon = meta.icon;
                 const active = category === cat;
                 return (
                   <button
@@ -119,7 +121,7 @@ export function AddResourceModal({
                     }`}
                     style={active ? { backgroundColor: meta.color } : undefined}
                   >
-                    <span aria-hidden>{meta.icon}</span>
+                    <Icon size={15} strokeWidth={2.25} />
                     {meta.label}
                   </button>
                 );

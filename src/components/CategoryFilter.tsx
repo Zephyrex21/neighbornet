@@ -19,6 +19,7 @@ export function CategoryFilter({
     <div className="flex flex-wrap gap-2">
       {CATEGORIES.map((cat) => {
         const meta = CATEGORY_META[cat];
+        const Icon = meta.icon;
         const active = selected.includes(cat);
         return (
           <button
@@ -31,7 +32,7 @@ export function CategoryFilter({
             }`}
             style={active ? { backgroundColor: meta.color } : undefined}
           >
-            <span aria-hidden>{meta.icon}</span>
+            <Icon size={15} strokeWidth={2.25} />
             {meta.label}
           </button>
         );
