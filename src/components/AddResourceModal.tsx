@@ -5,8 +5,14 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { X, MapPin } from "lucide-react";
 import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 import { addResource } from "../lib/resources";
+import type { Theme } from "../hooks/useTheme";
 
 const DELHI_CENTER: [number, number] = [28.6139, 77.209];
+
+const TILE_URLS: Record<Theme, string> = {
+  light: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+};
 
 const pickerIcon = divIcon({
   className: "",
@@ -33,16 +39,18 @@ function PinPicker({
 }
 
 const inputClass =
-  "w-full rounded-lg border border-ink-800/12 px-3.5 py-2.5 text-sm text-ink-950 placeholder:text-ash-500 transition focus:outline-none focus:ring-2 focus:ring-accent-500/30 focus:border-accent-500/50";
+  "w-full rounded-lg border border-ink-800/12 bg-white px-3.5 py-2.5 text-sm text-ink-950 placeholder:text-ash-500 transition focus:outline-none focus:ring-2 focus:ring-accent-500/30 focus:border-accent-500/50 dark:border-white/12 dark:bg-ink-800 dark:text-white dark:placeholder:text-paper-300/40";
 
-const labelClass = "mb-1.5 block font-mono text-[0.72rem] font-semibold uppercase tracking-wide text-ink-700";
+const labelClass = "mb-1.5 block font-mono text-[0.72rem] font-semibold uppercase tracking-wide text-ink-700 dark:text-paper-300/70";
 
 export function AddResourceModal({
   onClose,
   userLocation,
+  theme,
 }: {
   onClose: () => void;
   userLocation: [number, number] | null;
+  theme: Theme;
 }) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState<Category>("health");
@@ -104,16 +112,16 @@ export function AddResourceModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-paper-50 shadow-2xl"
+        className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-paper-50 shadow-2xl dark:bg-ink-900"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-ink-800/10 px-6 py-5">
-          <h2 className="font-display text-xl font-semibold text-ink-950">
+        <div className="flex items-center justify-between border-b border-ink-800/10 px-6 py-5 dark:border-white/10">
+          <h2 className="font-display text-xl font-semibold text-ink-950 dark:text-white">
             Add a resource
           </h2>
           <button
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-ash-500 transition hover:bg-ink-800/8 hover:text-ink-950"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-ash-500 transition hover:bg-ink-800/8 hover:text-ink-950 dark:text-paper-300/60 dark:hover:bg-white/10 dark:hover:text-white"
             aria-label="Close"
           >
             <X size={18} />
@@ -146,7 +154,7 @@ export function AddResourceModal({
                     className={`flex items-center gap-1.5 rounded-lg border px-3.5 py-1.5 font-mono text-[0.8rem] font-medium uppercase tracking-wide transition-all ${
                       active
                         ? "border-transparent text-white shadow-sm"
-                        : "border-ink-800/12 text-ash-600"
+                        : "border-ink-800/12 text-ash-600 dark:border-white/12 dark:text-paper-300/70"
                     }`}
                     style={active ? { backgroundColor: meta.color } : undefined}
                   >
@@ -160,21 +168,22 @@ export function AddResourceModal({
 
           <div>
             <label className={labelClass}>Pin the location (click on the map)</label>
-            <div className="relative isolate z-0 h-56 rounded-lg overflow-hidden border border-ink-800/12">
+            <div className="relative isolate z-0 h-56 rounded-lg overflow-hidden border border-ink-800/12 dark:border-white/12">
               <MapContainer
                 center={userLocation ?? DELHI_CENTER}
                 zoom={13}
                 style={{ height: "100%", width: "100%" }}
               >
                 <TileLayer
-                  attribution='&copy; OpenStreetMap'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  key={theme}
+                  attribution='&copy; OpenStreetMap &copy; CARTO'
+                  url={TILE_URLS[theme]}
                 />
                 <PinPicker position={position} onPick={setPosition} />
               </MapContainer>
             </div>
             {position && (
-              <p className="mt-1.5 text-[0.78rem] text-ash-500">
+              <p className="mt-1.5 text-[0.78rem] text-ash-500 dark:text-paper-300/50">
                 Pinned at {position[0].toFixed(4)}, {position[1].toFixed(4)}
               </p>
             )}
@@ -220,18 +229,18 @@ export function AddResourceModal({
               rows={2}
               className={inputClass}
             />
-            <p className="mt-1 text-[0.72rem] text-ash-500">
+            <p className="mt-1 text-[0.72rem] text-ash-500 dark:text-paper-300/40">
               {description.length}/200
             </p>
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
         </div>
 
-        <div className="flex justify-end gap-2 border-t border-ink-800/10 px-6 py-4">
+        <div className="flex justify-end gap-2 border-t border-ink-800/10 px-6 py-4 dark:border-white/10">
           <button
             onClick={onClose}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-ash-600 transition hover:bg-ink-800/8"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-ash-600 transition hover:bg-ink-800/8 dark:text-paper-300/70 dark:hover:bg-white/10"
           >
             Cancel
           </button>

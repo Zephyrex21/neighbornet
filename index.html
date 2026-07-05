@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NeighborNet — Find essential services near you</title>
     <meta name="description" content="Find and share free clinics, food banks, water points, shelters, and tutoring near you." />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("neighbornet-theme");
+          var dark = stored
+            ? stored === "dark"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

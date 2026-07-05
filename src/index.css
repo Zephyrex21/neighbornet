@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Cool near-black navy — tech UI base */
   --color-ink-950: #0a0e17;
@@ -43,6 +45,12 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink-950);
   background: var(--color-paper-50);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  color: var(--color-paper-100);
+  background: var(--color-ink-950);
 }
 
 .font-display {
@@ -54,8 +62,12 @@ body {
 }
 
 .bg-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(10, 14, 23, 0.07) 1px, transparent 1px);
   background-size: 22px 22px;
+}
+
+html.dark .bg-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
 }
 
 .leaflet-container {
@@ -65,10 +77,39 @@ body {
   background: var(--color-paper-100) !important;
 }
 
+html.dark .leaflet-container {
+  background: var(--color-ink-900) !important;
+}
+
 .leaflet-popup-content-wrapper {
   border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+html.dark .leaflet-popup-content-wrapper {
+  background: var(--color-ink-800);
+  color: var(--color-paper-100);
+}
+
+html.dark .leaflet-popup-tip {
+  background: var(--color-ink-800);
 }
 
 .leaflet-control-zoom a {
   color: var(--color-ink-900) !important;
+}
+
+html.dark .leaflet-control-zoom a {
+  background: var(--color-ink-800) !important;
+  color: var(--color-paper-100) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .leaflet-control-attribution {
+  background: rgba(15, 20, 32, 0.8) !important;
+  color: var(--color-ash-500) !important;
+}
+
+html.dark .leaflet-control-attribution a {
+  color: var(--color-accent-400) !important;
 }

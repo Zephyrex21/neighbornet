@@ -5,8 +5,14 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Navigation, Clock, Phone } from "lucide-react";
 import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
+import type { Theme } from "../hooks/useTheme";
 
 const DELHI_CENTER: [number, number] = [28.6139, 77.209];
+
+const TILE_URLS: Record<Theme, string> = {
+  light: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+};
 
 function categoryIcon(category: Resource["category"]) {
   const meta = CATEGORY_META[category];
@@ -45,10 +51,16 @@ function RecenterMap({ center }: { center: [number, number] | null }) {
 export function MapView({
   resources,
   userLocation,
+  theme,
 }: {
   resources: Resource[];
   userLocation: [number, number] | null;
+  theme: Theme;
 }) {
+  const popupText = theme === "dark" ? "#f1f3f6" : "#0a0e17";
+  const popupMuted = theme === "dark" ? "#94a3b8" : "#64748b";
+  const popupSecondary = theme === "dark" ? "#cbd5e1" : "#334155";
+
   return (
     <MapContainer
       center={userLocation ?? DELHI_CENTER}
@@ -57,8 +69,9 @@ export function MapView({
       style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        key={theme}
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url={TILE_URLS[theme]}
       />
       <RecenterMap center={userLocation} />
       {userLocation && (
@@ -75,7 +88,7 @@ export function MapView({
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: 15,
-                  color: "#0a0e17",
+                  color: popupText,
                 }}
               >
                 {r.name}
@@ -93,16 +106,16 @@ export function MapView({
               >
                 {CATEGORY_META[r.category].label}
               </div>
-              <div style={{ fontSize: 13, color: "#334155" }}>{r.address}</div>
+              <div style={{ fontSize: 13, color: popupSecondary }}>{r.address}</div>
               {r.hours && (
-                <div style={{ fontSize: 12, color: "#64748b", marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
-                  <Clock size={12} color="#64748b" />
+                <div style={{ fontSize: 12, color: popupMuted, marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Clock size={12} color={popupMuted} />
                   {r.hours}
                 </div>
               )}
               {r.contact && (
-                <div style={{ fontSize: 12, color: "#64748b", marginTop: 2, display: "flex", alignItems: "center", gap: 5 }}>
-                  <Phone size={12} color="#64748b" />
+                <div style={{ fontSize: 12, color: popupMuted, marginTop: 2, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Phone size={12} color={popupMuted} />
                   {r.contact}
                 </div>
               )}
