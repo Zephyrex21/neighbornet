@@ -19,9 +19,11 @@ Open the local URL. The map should load with an empty state (no pins yet).
 ```
 node seed.mjs
 ```
-This adds 51 real essential-service entries across Delhi NCR (Delhi,
-Gurugram, Noida, Ghaziabad, Faridabad) — health, food, water, shelter,
-education — to Firestore. Refresh the app — pins should appear.
+This adds 119 real essential-service entries across 7 major Indian metro
+regions — Delhi NCR (Delhi, Gurugram, Noida, Ghaziabad, Faridabad),
+Mumbai, Bangalore, Chennai, Kolkata, Hyderabad, and Pune — health, food,
+water, shelter, education — to Firestore. Refresh the app — pins should
+appear.
 
 ## 4. Lock down Firestore security rules
 Firebase console → Firestore Database → Rules → paste the contents of
@@ -44,11 +46,14 @@ for Firebase — security is enforced by Firestore rules, not by hiding
 the config).
 
 ## Notes on seed data
-All seed entries are **real organizations** (Mohalla Clinics, DUSIB night
-shelters, Delhi Public Library branches, IRCS blood banks, verified NGOs,
-etc.), sourced via web search. Coordinates are placed at the correct
-neighborhood/area level; a few are approximate since exact building-level
-geocoding wasn't available without a paid geocoding API. Good enough for
-a demo — if you want to tighten any pin's exact position later, just
-open it in the app's "Add resource" map picker to see where it landed
-and nudge as needed, or edit `seed-data.json` directly and re-seed.
+All seed entries are **real organizations** (Mohalla Clinics, Basthi
+Dawakhanas, BMC/BBMP/KMC/GHMC/PMC municipal health posts, DUSIB/MCG/BBMP
+night shelters, gurudwara langars, Amma Unavagam canteens, public
+libraries, blood banks, etc.), sourced via web search across official
+government directories and verified listings. Coordinates are placed at
+the correct neighborhood/area level; a few are approximate since exact
+building-level geocoding wasn't available without a paid geocoding API.
+Good enough for a demo — if you want to tighten any pin's exact position
+later, just open it in the app's "Add resource" map picker to see where
+it landed and nudge as needed, or edit `seed-data.json` directly and
+re-seed.

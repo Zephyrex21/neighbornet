@@ -7,7 +7,7 @@ import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 import { addResource } from "../lib/resources";
 import type { Theme } from "../hooks/useTheme";
 
-const DELHI_CENTER: [number, number] = [28.6139, 77.209];
+const INDIA_CENTER: [number, number] = [21.1458, 79.0882];
 
 const TILE_URLS: Record<Theme, string> = {
   light: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -170,8 +170,8 @@ export function AddResourceModal({
             <label className={labelClass}>Pin the location (click on the map)</label>
             <div className="relative isolate z-0 h-56 rounded-lg overflow-hidden border border-ink-800/12 dark:border-white/12">
               <MapContainer
-                center={userLocation ?? DELHI_CENTER}
-                zoom={13}
+                center={userLocation ?? INDIA_CENTER}
+                zoom={userLocation ? 13 : 5}
                 style={{ height: "100%", width: "100%" }}
               >
                 <TileLayer

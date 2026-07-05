@@ -7,7 +7,7 @@ import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
 import type { Theme } from "../hooks/useTheme";
 
-const DELHI_CENTER: [number, number] = [28.6139, 77.209];
+const INDIA_CENTER: [number, number] = [21.1458, 79.0882];
 
 const TILE_URLS: Record<Theme, string> = {
   light: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -63,8 +63,8 @@ export function MapView({
 
   return (
     <MapContainer
-      center={userLocation ?? DELHI_CENTER}
-      zoom={10}
+      center={userLocation ?? INDIA_CENTER}
+      zoom={userLocation ? 12 : 5}
       scrollWheelZoom
       style={{ height: "100%", width: "100%" }}
     >

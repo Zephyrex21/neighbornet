@@ -23,7 +23,7 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
               </span>
-              Live · Delhi NCR
+              Live · 7 Cities Across India
             </span>
 
             <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-ink-950 sm:text-[3.5rem] dark:text-white">
