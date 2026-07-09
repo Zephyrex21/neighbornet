@@ -5958,5 +5958,1405 @@
     "hours": "Mon-Sat, OPD hours",
     "contact": "",
     "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Hospital, Feroke",
+    "category": "health",
+    "lat": 11.155,
+    "lng": 75.785,
+    "address": "PO Feroke, Kozhikode-673631, Kerala",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Hospital, Kannur",
+    "category": "health",
+    "lat": 11.89,
+    "lng": 75.42,
+    "address": "Thottada, Thottada PO, Kannur-670007, Kerala",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Hospital, Kollam",
+    "category": "health",
+    "lat": 8.885,
+    "lng": 76.595,
+    "address": "Near Shankar's Hospital, Kadappakkada, Kollam, Kerala",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Hospital, Palakkad",
+    "category": "health",
+    "lat": 10.775,
+    "lng": 76.65,
+    "address": "Jainamed, Palakkad-678012, Kerala",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Hospital, Thrissur",
+    "category": "health",
+    "lat": 10.5,
+    "lng": 76.22,
+    "address": "Olarikkara, Thrissur-680012, Kerala",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Hospital, Vadavathur",
+    "category": "health",
+    "lat": 9.6,
+    "lng": 76.55,
+    "address": "Vadavathur PO, Kottayam, Kerala",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Dispensary, Fort Kochi",
+    "category": "health",
+    "lat": 9.965,
+    "lng": 76.24,
+    "address": "Opp. INS Dronacharya, Pattalam Road, Fort Kochi-682001, Kerala",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "0484-2218554",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kazhakuttom",
+    "category": "health",
+    "lat": 8.565,
+    "lng": 76.87,
+    "address": "Kazhakuttom, Thiruvananthapuram-695581, Kerala",
+    "hours": "Mon-Sun 8am-1pm",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Sahid Nagar, Bhubaneswar",
+    "category": "health",
+    "lat": 20.295,
+    "lng": 85.845,
+    "address": "Sahid Nagar, Bhubaneswar-751007, Odisha",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Directorate, Nayapalli, Bhubaneswar",
+    "category": "health",
+    "lat": 20.296,
+    "lng": 85.818,
+    "address": "Plot No. A/122, Nayapalli, Unit-VIII, Bhubaneswar, Odisha",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Odisha ESI scheme directorate and dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Jharsuguda",
+    "category": "health",
+    "lat": 21.856,
+    "lng": 84.006,
+    "address": "PO Jharsuguda-768203, Odisha",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Paradeep",
+    "category": "health",
+    "lat": 20.316,
+    "lng": 86.611,
+    "address": "IFFCO Chhak, Paradeep, Odisha",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Aska",
+    "category": "health",
+    "lat": 19.61,
+    "lng": 84.66,
+    "address": "Near Spinning Mill, Aska, Ganjam, Odisha",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "06822-273195",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Berhampur",
+    "category": "health",
+    "lat": 19.315,
+    "lng": 84.794,
+    "address": "Ganjam, Berhampur, Odisha",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Guwahati (Bamunimaidan)",
+    "category": "health",
+    "lat": 26.17,
+    "lng": 91.77,
+    "address": "MRD Road, House No. 16, Bamunimaidan, Guwahati-781021, Assam",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance Corporation NE Regional Office and dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Guwahati (Usha Nagar)",
+    "category": "health",
+    "lat": 26.15,
+    "lng": 91.74,
+    "address": "H. No. 8, Usha Nagar, Super Market, Guwahati-781006, Assam",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Jorhat",
+    "category": "health",
+    "lat": 26.75,
+    "lng": 94.22,
+    "address": "Old Circuit House Road, PO Jorhat-785001, Assam",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Dibrugarh",
+    "category": "health",
+    "lat": 27.47,
+    "lng": 94.91,
+    "address": "PO C.R. Building, Milannagar F Lane, Dibrugarh-786125, Assam",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Tezpur",
+    "category": "health",
+    "lat": 26.634,
+    "lng": 92.8,
+    "address": "Ushanagar, PO Tezpur, Sonitpur-784001, Assam",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Digboi",
+    "category": "health",
+    "lat": 27.39,
+    "lng": 95.62,
+    "address": "Digboi Tiniali, PO Digboi, Tinsukia-786171, Assam",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Shillong",
+    "category": "health",
+    "lat": 25.576,
+    "lng": 91.883,
+    "address": "Temple Road, Lower Lachumiere, Shillong-793001, Meghalaya",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kokar, Ranchi",
+    "category": "health",
+    "lat": 23.36,
+    "lng": 85.32,
+    "address": "Mari Complex, 18 Old HB Road, Shant Nagar, Kokar, Ranchi, Jharkhand",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Tupudana, Ranchi",
+    "category": "health",
+    "lat": 23.39,
+    "lng": 85.27,
+    "address": "Gurudwara Road, Hatia, Tupudana, Ranchi-834003, Jharkhand",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Bokaro",
+    "category": "health",
+    "lat": 23.67,
+    "lng": 86.15,
+    "address": "704, Bari Cooperative Colony, PO Sivandih, Bokaro-827010, Jharkhand",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Dhanbad",
+    "category": "health",
+    "lat": 23.795,
+    "lng": 86.43,
+    "address": "Opp. Sakti Mandir, Jora Phatak Road, Dhanbad, Jharkhand",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Adityapur, Jamshedpur",
+    "category": "health",
+    "lat": 22.785,
+    "lng": 86.16,
+    "address": "Sridungri, In Front of BSNL Office, Tata-Kandra Main Road, Adityapur, Saraikela Kharsawan, Jharkhand",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Ramgarh Cantt",
+    "category": "health",
+    "lat": 23.63,
+    "lng": 85.52,
+    "address": "Kalayani Complex, Thana Chowk, Ramgarh Cantt-829117, Jharkhand",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIC Model Hospital, Namkum, Ranchi",
+    "category": "health",
+    "lat": 23.34,
+    "lng": 85.38,
+    "address": "Namkum, Ranchi-834010, Jharkhand",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance Corporation model hospital."
+  },
+  {
+    "name": "ESI Hospital, Margao",
+    "category": "health",
+    "lat": 15.27,
+    "lng": 73.95,
+    "address": "Near Dr. Rajendra Prasad Stadium, Margao, Goa",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Corporation, Panaji",
+    "category": "health",
+    "lat": 15.495,
+    "lng": 73.828,
+    "address": "Plot No. 23, Panchdeep Bhavan, Patto, Panaji, Goa",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance regional office and dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Bicholim",
+    "category": "health",
+    "lat": 15.596,
+    "lng": 73.949,
+    "address": "No. 112, Industrial Estate, Bicholim, Goa",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Vasco-da-Gama",
+    "category": "health",
+    "lat": 15.398,
+    "lng": 73.811,
+    "address": "Dr. Ozler Forum Building, Near St. Andrew Church, Vasco-da-Gama, Goa",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Mudaliarpet, Puducherry",
+    "category": "health",
+    "lat": 11.925,
+    "lng": 79.8,
+    "address": "R.S. No. 89/2, Bouvankare Street, Mudaliarpet, Puducherry-605004",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Korba",
+    "category": "health",
+    "lat": 22.346,
+    "lng": 82.687,
+    "address": "Opp. Surabhi Restaurant, Near SBI Bank, Balco, Korba, Chhattisgarh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kabeer Nagar, Raipur",
+    "category": "health",
+    "lat": 21.238,
+    "lng": 81.652,
+    "address": "Housing Board Colony, Kabeer Nagar Phase-3, Raipur, Chhattisgarh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Dhamtari",
+    "category": "health",
+    "lat": 20.707,
+    "lng": 81.55,
+    "address": "Bastar Road, Dhamtari, Chhattisgarh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Hospital, Sirpur Kagaznagar",
+    "category": "health",
+    "lat": 19.32,
+    "lng": 79.59,
+    "address": "S.P.M Colony, Sirpur Kagaznagar, Adilabad-504296, Telangana",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance hospital."
+  },
+  {
+    "name": "ESI Dispensary, Chittoor",
+    "category": "health",
+    "lat": 13.217,
+    "lng": 79.1,
+    "address": "Near Nutrine Factory, Palamaner Road, Chittoor, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Rajahmundry",
+    "category": "health",
+    "lat": 17.0,
+    "lng": 81.78,
+    "address": "Lalacheruvu, H.No. 8-444, Rajahmundry, East Godavari, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Guntur",
+    "category": "health",
+    "lat": 16.3,
+    "lng": 80.44,
+    "address": "Devapuram 1st Line, Krishna Nagar, Guntur-522002, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "9966701154",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kukatpally",
+    "category": "health",
+    "lat": 17.484,
+    "lng": 78.407,
+    "address": "D.No. 658, MIG-II, APHB Colony, Kukatpally, Hyderabad-500072, Telangana",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Malkajgiri",
+    "category": "health",
+    "lat": 17.453,
+    "lng": 78.528,
+    "address": "H.No. 23-21, RK Nagar, Near Uttam Nagar, Anand Bagh, Malkajgiri, Hyderabad, Telangana",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Borabanda",
+    "category": "health",
+    "lat": 17.452,
+    "lng": 78.427,
+    "address": "No. 1-179/4, Snehapuri Colony, Borabanda, Hyderabad-500018, Telangana",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Vidyanagar, Hyderabad",
+    "category": "health",
+    "lat": 17.4,
+    "lng": 78.505,
+    "address": "Door No. 1-9-800 & 801, Adikmet, Vidyanagar, Hyderabad, Telangana",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Purani Haveli",
+    "category": "health",
+    "lat": 17.355,
+    "lng": 78.47,
+    "address": "D.No. 22-7-472/A/B/C, Near Princes Esin High School, Purani Haveli, Hyderabad, Telangana",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, L.B. Nagar",
+    "category": "health",
+    "lat": 17.346,
+    "lng": 78.553,
+    "address": "Anjaneya Swamy Temple, L.B. Nagar, Hyderabad-500035, Telangana",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Tadipatri",
+    "category": "health",
+    "lat": 14.909,
+    "lng": 78.01,
+    "address": "H.No. 5/292, Allabakash Street, Tadipatri, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Gajuwaka, Visakhapatnam",
+    "category": "health",
+    "lat": 17.687,
+    "lng": 83.2,
+    "address": "Panthulugari Meda, NH-5 Road, Old Gajuwaka Post, Visakhapatnam, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Bapunagar",
+    "category": "health",
+    "lat": 23.045,
+    "lng": 72.635,
+    "address": "D-21, Bapunagar Industrial Estate, Near Laxmi Narayan Society, Bapunagar, Ahmedabad, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kankaria",
+    "category": "health",
+    "lat": 23.005,
+    "lng": 72.605,
+    "address": "D-37, Opp. Neelkanth Mahadev, Old Pilot Dairy, Near Shreyas Store, Kankaria, Ahmedabad, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Raipur Darwaja",
+    "category": "health",
+    "lat": 23.02,
+    "lng": 72.595,
+    "address": "D-38/41, Near Laxmi Cotton Mill, Raipur Darwaja, Ahmedabad-380022, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Dhrangadhra",
+    "category": "health",
+    "lat": 22.986,
+    "lng": 71.467,
+    "address": "Old Govt. Hospital, Dhrangadhra-363310, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Kalol",
+    "category": "health",
+    "lat": 23.25,
+    "lng": 72.495,
+    "address": "Block No. 15 & 16, Mathuriya Nagar Society, Water Tank Road, Kalol, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Mehsana",
+    "category": "health",
+    "lat": 23.588,
+    "lng": 72.369,
+    "address": "Silver Complex, Opp. Shilpa Garage, Mehsana, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Nadiad",
+    "category": "health",
+    "lat": 22.692,
+    "lng": 72.862,
+    "address": "Swastik Society, Behind A1 Surya Apartment, In Front of Yamuna Colony, Behind Railway Station, Nadiad, Kheda, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Rajkot",
+    "category": "health",
+    "lat": 22.3039,
+    "lng": 70.8022,
+    "address": "8-Manharplot, Godown Road, Rajkot-360002, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Surendranagar",
+    "category": "health",
+    "lat": 22.728,
+    "lng": 71.638,
+    "address": "Behind Old Power House, Near Railway Under Bridge, Surendranagar, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS General Hospital, Kalol",
+    "category": "health",
+    "lat": 23.251,
+    "lng": 72.496,
+    "address": "Shivanand Arcade, Near Silver Plater Hotel, Opp. Kashiram Hall, Borisana Road, Kalol (North Gujarat)-382721",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance general hospital."
+  },
+  {
+    "name": "ESI Dispensary No. 1, Civil Lines, Jaipur",
+    "category": "health",
+    "lat": 26.92,
+    "lng": 75.79,
+    "address": "Plot No. 91/92, Shivaji Nagar, Civil Lines, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 2, Shastri Nagar, Jaipur",
+    "category": "health",
+    "lat": 26.935,
+    "lng": 75.79,
+    "address": "A-35, Shastri Nagar, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 4, Ajmer Road, Jaipur",
+    "category": "health",
+    "lat": 26.895,
+    "lng": 75.76,
+    "address": "ESI Hospital Campus, Laxmi Nagar, Ajmer Road, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 5, Bapu Nagar, Jaipur",
+    "category": "health",
+    "lat": 26.9,
+    "lng": 75.81,
+    "address": "C-95, Jagraj Marg, Bapu Nagar, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 6, Ambabari, Jaipur",
+    "category": "health",
+    "lat": 26.945,
+    "lng": 75.8,
+    "address": "D-138, Ground Floor, Durga Path, Ambabari, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 7, Chandpole Bazar, Jaipur",
+    "category": "health",
+    "lat": 26.925,
+    "lng": 75.82,
+    "address": "Topkhana Desh, Chandpole Bazar, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 9, VKI Area, Jaipur",
+    "category": "health",
+    "lat": 26.97,
+    "lng": 75.79,
+    "address": "Near 32 Dukan, Road No. 9, V.K.I. Area, Jaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 1, Jodhpur",
+    "category": "health",
+    "lat": 26.28,
+    "lng": 73.02,
+    "address": "Opp. Medical College, Jodhpur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 2, Paota, Jodhpur",
+    "category": "health",
+    "lat": 26.295,
+    "lng": 73.035,
+    "address": "No. 2, 5th, Paota C Road, Maha Mandir Area, Behind Akashwani Bhawan, Jodhpur-342006, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 3, Basni, Jodhpur",
+    "category": "health",
+    "lat": 26.25,
+    "lng": 73.0,
+    "address": "Basni, Jodhpur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 4, Kamla Nehru Nagar, Jodhpur",
+    "category": "health",
+    "lat": 26.27,
+    "lng": 73.03,
+    "address": "Kamla Nehru Nagar, ESI Hospital Campus, Jodhpur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Boranada, Jodhpur",
+    "category": "health",
+    "lat": 26.22,
+    "lng": 72.95,
+    "address": "RIICO Campus, Opp. SBBJ, Boranada, Jodhpur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 4, Industrial Area, Kota",
+    "category": "health",
+    "lat": 25.18,
+    "lng": 75.83,
+    "address": "Industrial Area, Kota, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 1, Jhalawar Road, Kota",
+    "category": "health",
+    "lat": 25.16,
+    "lng": 75.86,
+    "address": "Building of ESI Hospital-Kota, Room No. 17-20, Jhalawar Road, Kota, Rajasthan",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary and hospital."
+  },
+  {
+    "name": "ESI Dispensary No. 1, Ashok Nagar, Udaipur",
+    "category": "health",
+    "lat": 24.59,
+    "lng": 73.71,
+    "address": "Ashok Nagar, Udaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 2, Madri, Udaipur",
+    "category": "health",
+    "lat": 24.56,
+    "lng": 73.73,
+    "address": "Near Khichi Industrial Area, Madri, Udaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 3, Sukher, Udaipur",
+    "category": "health",
+    "lat": 24.61,
+    "lng": 73.68,
+    "address": "Fatehpura Badia Road, Sukher, Udaipur, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Beawar",
+    "category": "health",
+    "lat": 26.1,
+    "lng": 74.32,
+    "address": "College Road, Beawar, Ajmer, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Rani Bazar, Bikaner",
+    "category": "health",
+    "lat": 28.02,
+    "lng": 73.31,
+    "address": "Rani Bazar, Industrial Area, Bikaner, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Bichhawal, Bikaner",
+    "category": "health",
+    "lat": 28.05,
+    "lng": 73.33,
+    "address": "Plot No. A-9, SWM Residential Colony, Industrial Area, Bichhawal, Bikaner, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Alwar",
+    "category": "health",
+    "lat": 27.55,
+    "lng": 76.63,
+    "address": "ESIC Quarter, South West Block, Kala Kua, Alwar, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 1, Pali",
+    "category": "health",
+    "lat": 25.77,
+    "lng": 73.32,
+    "address": "Jodhpur Road, Near LMJ Maruti Showroom, Pali, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Falna",
+    "category": "health",
+    "lat": 25.25,
+    "lng": 73.25,
+    "address": "Falna, Pali District, Rajasthan",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Abohar",
+    "category": "health",
+    "lat": 30.145,
+    "lng": 74.195,
+    "address": "Abohar, Punjab",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Amritsar",
+    "category": "health",
+    "lat": 31.634,
+    "lng": 74.872,
+    "address": "Amritsar, Punjab",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 1, Bathinda",
+    "category": "health",
+    "lat": 30.21,
+    "lng": 74.945,
+    "address": "Bathinda, Punjab",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 2, Bathinda (Thermal Plant)",
+    "category": "health",
+    "lat": 30.19,
+    "lng": 74.92,
+    "address": "Guru Nanak Thermal Plant, Bathinda, Punjab",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary No. 3, Bathinda (Dabwali Road)",
+    "category": "health",
+    "lat": 30.22,
+    "lng": 74.95,
+    "address": "Galaxy Building, Dabwali Road, Bathinda, Punjab",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Branch Office, Vapi",
+    "category": "health",
+    "lat": 20.371,
+    "lng": 72.905,
+    "address": "ESIS General Hospital Campus, 1st Floor, Silvassa Road, Vapi, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office and dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Jamalpur, Ahmedabad",
+    "category": "health",
+    "lat": 23.015,
+    "lng": 72.585,
+    "address": "Kankariya, Near Gordhan Wadi Tekra, Jamalpur, Ahmedabad, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESIS Dispensary, Sabarmati, Ahmedabad",
+    "category": "health",
+    "lat": 23.07,
+    "lng": 72.58,
+    "address": "D-1, Acher, Sabarmati, Ahmedabad, Gujarat",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Chhipitola, Agra",
+    "category": "health",
+    "lat": 27.159,
+    "lng": 78.01,
+    "address": "Fatehabad Road, Near Mugal Sheraton, Agra, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Jivini Mandi, Agra",
+    "category": "health",
+    "lat": 27.185,
+    "lng": 78.008,
+    "address": "Takiya Lal Masjid, Agra, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Govind Nagar, Kanpur",
+    "category": "health",
+    "lat": 26.46,
+    "lng": 80.3,
+    "address": "Near Thana, Govind Nagar, Kanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Pandu Nagar, Kanpur",
+    "category": "health",
+    "lat": 26.47,
+    "lng": 80.33,
+    "address": "Pandu Nagar, Kanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kidwai Nagar, Kanpur",
+    "category": "health",
+    "lat": 26.44,
+    "lng": 80.31,
+    "address": "Kidwai Nagar, Kanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Sarvodaya Nagar, Kanpur",
+    "category": "health",
+    "lat": 26.475,
+    "lng": 80.32,
+    "address": "Sarvodaya Nagar, Kanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Naini, Allahabad",
+    "category": "health",
+    "lat": 25.4,
+    "lng": 81.82,
+    "address": "Naini, Prayagraj (Allahabad), Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Modi Nagar",
+    "category": "health",
+    "lat": 28.83,
+    "lng": 77.575,
+    "address": "Modi Nagar, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Saharanpur",
+    "category": "health",
+    "lat": 29.964,
+    "lng": 77.546,
+    "address": "Saharanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Kiran Colony, Ghaziabad",
+    "category": "health",
+    "lat": 28.67,
+    "lng": 77.43,
+    "address": "Kiran Colony, Ghaziabad, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Aligarh",
+    "category": "health",
+    "lat": 27.8974,
+    "lng": 78.088,
+    "address": "Aligarh, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Civil Lines, Allahabad",
+    "category": "health",
+    "lat": 25.452,
+    "lng": 81.832,
+    "address": "Amarnath Jha Marg, George Town, Prayagraj (Allahabad), Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Mirzapur",
+    "category": "health",
+    "lat": 25.146,
+    "lng": 82.569,
+    "address": "T.B. Dispensary Campus, Mirzapur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Firozabad",
+    "category": "health",
+    "lat": 27.15,
+    "lng": 78.396,
+    "address": "77/2, Mahavir Nagar, Firozabad, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Hathras",
+    "category": "health",
+    "lat": 27.595,
+    "lng": 78.052,
+    "address": "Near Station, Maal Godam, Medu Gate, Hathras, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Mainpuri",
+    "category": "health",
+    "lat": 27.235,
+    "lng": 79.027,
+    "address": "Near Bhagwat Chauhara, Station Road, Mainpuri, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Benajhabar, Kanpur",
+    "category": "health",
+    "lat": 26.455,
+    "lng": 80.34,
+    "address": "Labor Colony, Benajhabar, Kanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Dalelpurwa, Kanpur",
+    "category": "health",
+    "lat": 26.465,
+    "lng": 80.345,
+    "address": "Nai Sadak, Reserve Road, Dalelpurwa, Kanpur, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Etawah",
+    "category": "health",
+    "lat": 26.777,
+    "lng": 79.021,
+    "address": "Purana Zila Chikitsalaya, Etawah, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Farrukhabad",
+    "category": "health",
+    "lat": 27.393,
+    "lng": 79.58,
+    "address": "Aditiyan Mohalla, Railway Road, Farrukhabad, Uttar Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, D.R. Mohalla, Mysore",
+    "category": "health",
+    "lat": 12.305,
+    "lng": 76.65,
+    "address": "ESID Building, Krishnavilas Road, D.R. Mohalla, Mysore, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Seshadripuram, Bangalore",
+    "category": "health",
+    "lat": 12.995,
+    "lng": 77.575,
+    "address": "2nd Floor, ESID Building, Sirur Park Road, Seshadripuram, Bangalore, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Majestic, Bangalore",
+    "category": "health",
+    "lat": 12.977,
+    "lng": 77.572,
+    "address": "1st Floor, ESID Building, 2nd Cross, OTC Road, Majestic, Bangalore, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Branch Office, Belgaum",
+    "category": "health",
+    "lat": 15.8497,
+    "lng": 74.4977,
+    "address": "No. 7/B-1, Kangrali Industrial Area, Belgaum-10, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "0831-2470137",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Bellary",
+    "category": "health",
+    "lat": 15.1394,
+    "lng": 76.9214,
+    "address": "ESIC Building, HD Colony, Bellary, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Bijapur",
+    "category": "health",
+    "lat": 16.8302,
+    "lng": 75.71,
+    "address": "191/6, Behind Allmail House, Station Road, Bijapur-586101, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Dispensary, Hubli",
+    "category": "health",
+    "lat": 15.3647,
+    "lng": 75.124,
+    "address": "Near Central Bus Stand, Gokul Road, Hubli-580030, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Dispensary, Udupi",
+    "category": "health",
+    "lat": 13.3409,
+    "lng": 74.7421,
+    "address": "Complex, Tenkapete, Udupi-576101, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance dispensary."
+  },
+  {
+    "name": "ESI Branch Office, Davangere",
+    "category": "health",
+    "lat": 14.4644,
+    "lng": 75.9218,
+    "address": "No. 628/30, Near Shivayogi Mandir, Nituvalli Road, K.B. Extension, Davangere-577002, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Gulbarga",
+    "category": "health",
+    "lat": 17.3297,
+    "lng": 76.8343,
+    "address": "Colony, Behind Central Bus Stand, Gulbarga-585103, Karnataka",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Adoni",
+    "category": "health",
+    "lat": 15.628,
+    "lng": 77.274,
+    "address": "ESI Compound Wall, Adoni-518301, Kurnool District, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Madanapally",
+    "category": "health",
+    "lat": 13.55,
+    "lng": 78.501,
+    "address": "Opp. APSRTC Bus Stand, Madanapally, Chittoor-517325, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Hindupur",
+    "category": "health",
+    "lat": 13.828,
+    "lng": 77.491,
+    "address": "Near Shanti Talkies, Hindupur-515201, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Kurnool",
+    "category": "health",
+    "lat": 15.8281,
+    "lng": 78.0373,
+    "address": "Venkata Ramana Colony, Kurnool-518001, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Tanuku",
+    "category": "health",
+    "lat": 16.755,
+    "lng": 81.68,
+    "address": "Satyanarayana Puram, Tanuku-534211, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Branch Office, Tirupati",
+    "category": "health",
+    "lat": 13.6288,
+    "lng": 79.4192,
+    "address": "D.No. 6-1-77/A, Varadaraja Nagar, KT Road, Tirupati, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESIC Branch Office, Auto Nagar, Vijayawada",
+    "category": "health",
+    "lat": 16.49,
+    "lng": 80.67,
+    "address": "Near Fire Station, Auto Nagar, Vijayawada-520007, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESIC Branch Office, Gandhi Nagar, Vijayawada",
+    "category": "health",
+    "lat": 16.51,
+    "lng": 80.63,
+    "address": "26-22-30, Nutan Towers, Near Jayaram Theatre, Gandhi Nagar, Vijayawada-520003, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESIC Branch Office, Chittivalasa, Visakhapatnam",
+    "category": "health",
+    "lat": 17.78,
+    "lng": 83.21,
+    "address": "Chittivalasa, Visakhapatnam, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESIC Branch Office, Marripalem, Visakhapatnam",
+    "category": "health",
+    "lat": 17.73,
+    "lng": 83.3,
+    "address": "Marripalem, Visakhapatnam, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESIC Branch Office, Vizianagaram",
+    "category": "health",
+    "lat": 18.1067,
+    "lng": 83.3956,
+    "address": "Nellimarla, Vizianagaram, Andhra Pradesh",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance branch office."
+  },
+  {
+    "name": "ESI Service Dispensary, Asansol",
+    "category": "health",
+    "lat": 23.6739,
+    "lng": 86.9524,
+    "address": "ESI Hospital, Asansol, West Bengal",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Durgapur",
+    "category": "health",
+    "lat": 23.5204,
+    "lng": 87.3119,
+    "address": "ESI Hospital, Durgapur, West Bengal",
+    "hours": "24 hours",
+    "contact": "",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Siliguri",
+    "category": "health",
+    "lat": 26.7271,
+    "lng": 88.3953,
+    "address": "WB Small Scale Industries Complex, Sevak Road, Siliguri, Darjeeling, West Bengal",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "0353-2571263",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Kharagpur",
+    "category": "health",
+    "lat": 22.3302,
+    "lng": 87.3237,
+    "address": "Jhapatapur, Kharagpur, Paschim Medinipur, West Bengal",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "03222-325820",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Malda",
+    "category": "health",
+    "lat": 25.0108,
+    "lng": 88.1414,
+    "address": "SM Pally, BG Road, Malda, West Bengal",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Haldia",
+    "category": "health",
+    "lat": 22.0667,
+    "lng": 88.0698,
+    "address": "Dr. B.C. Roy Hospital, Balughata, Haldia, Purba Medinipur, West Bengal",
+    "hours": "24 hours",
+    "contact": "03224-269048",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Hospital, Kalyani",
+    "category": "health",
+    "lat": 22.975,
+    "lng": 88.434,
+    "address": "ESI Hospital, Kalyani, Nadia, West Bengal",
+    "hours": "24 hours",
+    "contact": "2502-5225",
+    "description": "Employees' State Insurance hospital and service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Bandel",
+    "category": "health",
+    "lat": 22.92,
+    "lng": 88.38,
+    "address": "ESI Hospital, Bandel, Hooghly, West Bengal",
+    "hours": "24 hours",
+    "contact": "2631-1300",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Rampurhat",
+    "category": "health",
+    "lat": 24.17,
+    "lng": 87.78,
+    "address": "Bharsalpur, Rampurhat, Birbhum, West Bengal",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance service dispensary."
+  },
+  {
+    "name": "ESI Service Dispensary, Berhampur (Murshidabad)",
+    "category": "health",
+    "lat": 24.09,
+    "lng": 88.25,
+    "address": "Indraprastha, A.C. Road, Berhampur, Murshidabad, West Bengal",
+    "hours": "Mon-Sat, OPD hours",
+    "contact": "",
+    "description": "Employees' State Insurance service dispensary."
   }
 ]
