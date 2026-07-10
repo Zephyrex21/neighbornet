@@ -1,6 +1,7 @@
-import { Clock, Phone, ArrowRight } from "lucide-react";
+import { Clock, Phone, ArrowRight, Flag } from "lucide-react";
 import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
+import { ACCESS_META } from "../lib/access";
 import { formatDistance } from "../lib/distance";
 
 export function ResourceCard({
@@ -40,6 +41,15 @@ export function ResourceCard({
           </span>
         )}
       </div>
+      <span
+        className="mt-2 inline-block rounded-full border px-2 py-0.5 text-[0.68rem] font-semibold"
+        style={{
+          color: ACCESS_META[resource.access ?? "open"].color,
+          borderColor: `${ACCESS_META[resource.access ?? "open"].color}40`,
+        }}
+      >
+        {ACCESS_META[resource.access ?? "open"].label}
+      </span>
       <p className="mt-2.5 text-[0.87rem] leading-snug text-ash-600 dark:text-paper-300/70">
         {resource.address}
       </p>
@@ -62,14 +72,27 @@ export function ResourceCard({
           {resource.description}
         </p>
       )}
-      <a
-        href={`https://www.google.com/maps/dir/?api=1&destination=${resource.lat},${resource.lng}`}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-3 inline-flex items-center gap-1 text-[0.8rem] font-semibold text-accent-600 transition group-hover:gap-1.5 dark:text-accent-400"
-      >
-        Get directions <ArrowRight size={14} />
-      </a>
+      <div className="mt-3 flex items-center justify-between">
+        <a
+          href={`https://www.google.com/maps/dir/?api=1&destination=${resource.lat},${resource.lng}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-[0.8rem] font-semibold text-accent-600 transition group-hover:gap-1.5 dark:text-accent-400"
+        >
+          Get directions <ArrowRight size={14} />
+        </a>
+        <a
+          href={`mailto:venom013524@gmail.com?subject=${encodeURIComponent(
+            `Issue with listing: ${resource.name}`
+          )}&body=${encodeURIComponent(
+            `Please describe what's outdated or incorrect about this listing:\n\n---\n${resource.name}\n${resource.address}`
+          )}`}
+          className="inline-flex items-center gap-1 text-[0.72rem] font-medium text-ash-500 transition hover:text-ash-600 dark:text-paper-300/40 dark:hover:text-paper-300/70"
+          title="Report outdated or incorrect information"
+        >
+          <Flag size={12} /> Report issue
+        </a>
+      </div>
     </div>
   );
 }

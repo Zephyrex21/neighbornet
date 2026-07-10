@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 import type { Category } from "./categories";
+import type { AccessType } from "./access";
 
 export type Resource = {
   id: string;
@@ -19,6 +20,7 @@ export type Resource = {
   hours: string;
   contact?: string;
   description?: string;
+  access: AccessType;
   source: "seed" | "user";
   createdAt: Timestamp;
 };

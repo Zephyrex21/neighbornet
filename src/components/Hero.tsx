@@ -35,7 +35,8 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
             <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-ash-600 dark:text-paper-300/70">
               NeighborNet maps free clinics, food banks, water points,
               shelters, and tutoring near you — and lets anyone add a new
-              one in under a minute. No login, no gatekeeping.
+              one in under a minute. No login to browse or contribute —
+              and every listing shows exactly who can use it.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <button

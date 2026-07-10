@@ -1,10 +1,12 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
 import { divIcon } from "leaflet";
 import { useEffect } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Navigation, Clock, Phone } from "lucide-react";
 import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
+import { ACCESS_META } from "../lib/access";
 import type { Theme } from "../hooks/useTheme";
 
 const INDIA_CENTER: [number, number] = [21.1458, 79.0882];
@@ -79,7 +81,21 @@ export function MapView({
           <Popup>You are here</Popup>
         </Marker>
       )}
-      {resources.map((r) => (
+      <MarkerClusterGroup
+        chunkedLoading
+        maxClusterRadius={55}
+        spiderfyOnMaxZoom
+        iconCreateFunction={(cluster: { getChildCount: () => number }) => {
+          const count = cluster.getChildCount();
+          const size = count < 10 ? 34 : count < 50 ? 40 : count < 200 ? 46 : 52;
+          return divIcon({
+            html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:#4f46e5;border:3px solid white;box-shadow:0 2px 8px rgba(16,22,31,0.4);display:flex;align-items:center;justify-content:center;color:white;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:${count < 100 ? 12 : 11}px;">${count}</div>`,
+            className: "",
+            iconSize: [size, size],
+          });
+        }}
+      >
+        {resources.map((r) => (
         <Marker key={r.id} position={[r.lat, r.lng]} icon={categoryIcon(r.category)}>
           <Popup>
             <div style={{ minWidth: 190, fontFamily: "'Inter', sans-serif" }}>
@@ -107,6 +123,20 @@ export function MapView({
                 {CATEGORY_META[r.category].label}
               </div>
               <div style={{ fontSize: 13, color: popupSecondary }}>{r.address}</div>
+              <div
+                style={{
+                  display: "inline-block",
+                  fontSize: 10.5,
+                  fontWeight: 600,
+                  color: ACCESS_META[r.access ?? "open"].color,
+                  border: `1px solid ${ACCESS_META[r.access ?? "open"].color}55`,
+                  borderRadius: 20,
+                  padding: "2px 8px",
+                  marginTop: 6,
+                }}
+              >
+                {ACCESS_META[r.access ?? "open"].label}
+              </div>
               {r.hours && (
                 <div style={{ fontSize: 12, color: popupMuted, marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
                   <Clock size={12} color={popupMuted} />
@@ -122,7 +152,8 @@ export function MapView({
             </div>
           </Popup>
         </Marker>
-      ))}
+        ))}
+      </MarkerClusterGroup>
     </MapContainer>
   );
 }

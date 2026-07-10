@@ -4,6 +4,7 @@ import { Hero } from "./components/Hero";
 import { Footer } from "./components/Footer";
 import { ViewToggle } from "./components/ViewToggle";
 import { CategoryFilter } from "./components/CategoryFilter";
+import { AccessFilter } from "./components/AccessFilter";
 import { SearchBar } from "./components/SearchBar";
 import { MapView } from "./components/MapView";
 import { ListView } from "./components/ListView";
@@ -11,7 +12,8 @@ import { AddResourceModal } from "./components/AddResourceModal";
 import { useResources } from "./hooks/useResources";
 import { useGeolocation } from "./hooks/useGeolocation";
 import { useTheme } from "./hooks/useTheme";
-import { CATEGORIES, type Category } from "./lib/categories";
+import { CATEGORIES, CATEGORY_META, type Category } from "./lib/categories";
+import { ACCESS_TYPES, type AccessType } from "./lib/access";
 import { distanceKm } from "./lib/distance";
 import { MapPin } from "lucide-react";
 
@@ -26,6 +28,8 @@ function App() {
   const [view, setView] = useState<"map" | "list">("map");
   const [selectedCategories, setSelectedCategories] =
     useState<Category[]>(CATEGORIES);
+  const [selectedAccess, setSelectedAccess] =
+    useState<AccessType[]>(ACCESS_TYPES);
   const [search, setSearch] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
 
@@ -34,8 +38,10 @@ function App() {
     : null;
 
   const filtered = useMemo(() => {
-    let result = resources.filter((r) =>
-      selectedCategories.includes(r.category)
+    let result = resources.filter(
+      (r) =>
+        selectedCategories.includes(r.category) &&
+        selectedAccess.includes(r.access ?? "open")
     );
     if (search.trim()) {
       const q = search.trim().toLowerCase();
@@ -53,7 +59,15 @@ function App() {
       );
     }
     return result;
-  }, [resources, selectedCategories, search, userLocation]);
+  }, [resources, selectedCategories, selectedAccess, search, userLocation]);
+
+  const categoryCounts = useMemo(() => {
+    const counts: Record<Category, number> = {
+      health: 0, food: 0, water: 0, shelter: 0, education: 0,
+    };
+    resources.forEach((r) => { counts[r.category]++; });
+    return counts;
+  }, [resources]);
 
   return (
     <div className="min-h-screen bg-paper-50 dark:bg-ink-950">
@@ -78,17 +92,36 @@ function App() {
           </div>
         </div>
 
+        <div className="mb-4 flex flex-wrap gap-2">
+          {CATEGORIES.map((cat) => {
+            const meta = CATEGORY_META[cat];
+            const Icon = meta.icon;
+            return (
+              <span
+                key={cat}
+                className="flex items-center gap-1.5 rounded-full border border-ink-800/8 bg-paper-100 px-2.5 py-1 text-[0.72rem] text-ash-500 dark:border-white/8 dark:bg-white/5 dark:text-paper-300/50"
+                title={`${categoryCounts[cat]} ${meta.label.toLowerCase()} resources currently listed`}
+              >
+                <Icon size={12} style={{ color: meta.color }} />
+                <span className="font-mono">{categoryCounts[cat]}</span>
+                {meta.label}
+              </span>
+            );
+          })}
+        </div>
+
         <div className="flex flex-col gap-3 rounded-t-2xl border border-b-0 border-ink-800/10 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:bg-ink-900">
           <div className="flex-1 max-w-md">
             <SearchBar value={search} onChange={setSearch} />
           </div>
           <ViewToggle view={view} onChange={setView} />
         </div>
-        <div className="border-x border-ink-800/10 bg-white px-5 py-4 dark:border-white/10 dark:bg-ink-900">
+        <div className="space-y-3 border-x border-ink-800/10 bg-white px-5 py-4 dark:border-white/10 dark:bg-ink-900">
           <CategoryFilter
             selected={selectedCategories}
             onChange={setSelectedCategories}
           />
+          <AccessFilter selected={selectedAccess} onChange={setSelectedAccess} />
         </div>
 
         <div className="relative isolate z-0 h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm dark:border-white/10">

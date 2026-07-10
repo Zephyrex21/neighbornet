@@ -8,6 +8,8 @@ service cloud.firestore {
         && request.resource.data.name.size() < 100
         && request.resource.data.category in
            ['health','food','water','shelter','education']
+        && request.resource.data.access in
+           ['open','insured','registered']
         && request.resource.data.lat is number
         && request.resource.data.lng is number
         && request.resource.data.address is string

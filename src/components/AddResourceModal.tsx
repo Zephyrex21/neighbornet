@@ -4,6 +4,7 @@ import { divIcon } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import { X, MapPin } from "lucide-react";
 import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
+import { ACCESS_TYPES, ACCESS_META, type AccessType } from "../lib/access";
 import { addResource } from "../lib/resources";
 import type { Theme } from "../hooks/useTheme";
 
@@ -54,6 +55,7 @@ export function AddResourceModal({
 }) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState<Category>("health");
+  const [access, setAccess] = useState<AccessType>("open");
   const [address, setAddress] = useState("");
   const [hours, setHours] = useState("");
   const [contact, setContact] = useState("");
@@ -89,6 +91,7 @@ export function AddResourceModal({
       await addResource({
         name: name.trim(),
         category,
+        access,
         lat: position[0],
         lng: position[1],
         address: address.trim(),
@@ -164,6 +167,34 @@ export function AddResourceModal({
                 );
               })}
             </div>
+          </div>
+
+          <div>
+            <label className={labelClass}>Who can use it?</label>
+            <div className="flex flex-wrap gap-2">
+              {ACCESS_TYPES.map((a) => {
+                const meta = ACCESS_META[a];
+                const active = access === a;
+                return (
+                  <button
+                    key={a}
+                    type="button"
+                    onClick={() => setAccess(a)}
+                    className={`rounded-lg border px-3.5 py-1.5 text-left text-[0.8rem] font-medium transition-all ${
+                      active
+                        ? "border-transparent text-white shadow-sm"
+                        : "border-ink-800/12 text-ash-600 dark:border-white/12 dark:text-paper-300/70"
+                    }`}
+                    style={active ? { backgroundColor: meta.color } : undefined}
+                  >
+                    {meta.label}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="mt-1.5 text-[0.78rem] text-ash-500 dark:text-paper-300/50">
+              {ACCESS_META[access].description}
+            </p>
           </div>
 
           <div>

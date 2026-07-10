@@ -45,6 +45,26 @@ needed since Firebase config is in the client code (this is normal/safe
 for Firebase — security is enforced by Firestore rules, not by hiding
 the config).
 
+## 7. Set a real "report an issue" email
+Each resource card has a "Report issue" link that opens a pre-filled
+email. It currently points to `report@neighbornet.app`, which is a
+placeholder — **this inbox doesn't exist**. Either set up that address
+for real, or find-and-replace it in `src/components/ResourceCard.tsx`
+with an email you actually monitor.
+
+## What's new in this update
+- **Marker clustering**: at 744 pins, the map now groups nearby markers
+  into clickable clusters (via `react-leaflet-cluster`) instead of
+  rendering every pin individually — fixes visual overload at this scale.
+- **Access-type field**: every resource is now tagged `open`, `insured`,
+  or `registered` based on who can actually use it (e.g. ESI dispensaries
+  require workplace insurance, not walk-in access). Shown as a badge on
+  every card/popup and filterable in the UI. This replaced an earlier
+  "no gatekeeping" claim that wasn't accurate for ~27% of the dataset.
+- **Category count transparency**: the Explore section now shows a live
+  per-category count strip so the health-heavy skew (605 of 744 entries)
+  is visible rather than implied to be balanced.
+
 ## Notes on seed data
 All seed entries are **real organizations** (Mohalla Clinics, Basthi
 Dawakhanas, BMC/BBMP/KMC/GHMC/PMC municipal health posts, DUSIB/MCG/BBMP
