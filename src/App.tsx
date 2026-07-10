@@ -1,4 +1,4 @@
-import { lazy, Suspense, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState, useTransition } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Footer } from "./components/Footer";
@@ -19,12 +19,13 @@ import { MapPin } from "lucide-react";
 const GITHUB_URL = "https://github.com/Zephyrex21/neighbornet";
 const LIVE_URL = "https://neighbornet-ten.vercel.app/";
 
-const AddResourceModal = lazy(() =>
-  import("./components/AddResourceModal").then((m) => ({ default: m.AddResourceModal }))
-);
-const ListView = lazy(() =>
-  import("./components/ListView").then((m) => ({ default: m.ListView }))
-);
+const loadAddResourceModal = () =>
+  import("./components/AddResourceModal").then((m) => ({ default: m.AddResourceModal }));
+const loadListView = () =>
+  import("./components/ListView").then((m) => ({ default: m.ListView }));
+
+const AddResourceModal = lazy(loadAddResourceModal);
+const ListView = lazy(loadListView);
 
 function App() {
   const { resources, loading } = useResources();
@@ -32,13 +33,43 @@ function App() {
   const { theme, toggleTheme } = useTheme();
 
   const [view, setView] = useState<"map" | "list">("map");
-  const [selectedCategories, setSelectedCategories] =
+  const [selectedCategories, setSelectedCategoriesRaw] =
     useState<Category[]>(CATEGORIES);
-  const [selectedAccess, setSelectedAccess] =
+  const [selectedAccess, setSelectedAccessRaw] =
     useState<AccessType[]>(ACCESS_TYPES);
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 200);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [isPending, startTransition] = useTransition();
+
+  // Filter changes recompute the full resource list and rebuild map markers,
+  // which is expensive at this data volume. Marking them as transitions lets
+  // React keep the button's own click feedback instant while that heavier
+  // work happens without blocking input.
+  const setSelectedCategories = (value: Category[]) => {
+    startTransition(() => setSelectedCategoriesRaw(value));
+  };
+  const setSelectedAccess = (value: AccessType[]) => {
+    startTransition(() => setSelectedAccessRaw(value));
+  };
+  const changeView = (value: "map" | "list") => {
+    if (value === "list") loadListView();
+    startTransition(() => setView(value));
+  };
+
+  useEffect(() => {
+    // The Add Resource modal is small and commonly used soon after landing —
+    // prefetch it once the browser is idle so clicking it feels instant
+    // instead of waiting on a network round-trip for the chunk.
+    const idle =
+      "requestIdleCallback" in window
+        ? window.requestIdleCallback
+        : (cb: () => void) => setTimeout(cb, 1500);
+    const cancel =
+      "cancelIdleCallback" in window ? window.cancelIdleCallback : clearTimeout;
+    const id = idle(() => loadAddResourceModal());
+    return () => cancel(id as number);
+  }, []);
 
   const userLocation: [number, number] | null = useMemo(
     () => (location ? [location.lat, location.lng] : null),
@@ -96,6 +127,7 @@ function App() {
             <p className="mt-1 font-mono text-[0.82rem] text-ash-500 dark:text-paper-300/50">
               {filtered.length} resource{filtered.length !== 1 ? "s" : ""}{" "}
               {selectedCategories.length < CATEGORIES.length ? "matching your filters" : "across 10 major Indian cities"}
+              {isPending && <span className="ml-1 opacity-60">· updating…</span>}
             </p>
           </div>
         </div>
@@ -122,7 +154,7 @@ function App() {
           <div className="flex-1 max-w-md">
             <SearchBar value={search} onChange={setSearch} />
           </div>
-          <ViewToggle view={view} onChange={setView} />
+          <ViewToggle view={view} onChange={changeView} />
         </div>
         <div className="space-y-3 border-x border-ink-800/10 bg-white px-5 py-4 dark:border-white/10 dark:bg-ink-900">
           <CategoryFilter
@@ -132,7 +164,7 @@ function App() {
           <AccessFilter selected={selectedAccess} onChange={setSelectedAccess} />
         </div>
 
-        <div className="relative isolate z-0 h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm dark:border-white/10">
+        <div className="relative isolate z-0 h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm transition-opacity dark:border-white/10" style={{ opacity: isPending ? 0.7 : 1 }}>
           {loading ? (
             <div className="flex h-full items-center justify-center text-ash-500 dark:bg-ink-900 dark:text-paper-300/50">
               Loading resources…
@@ -170,7 +202,13 @@ function App() {
       <Footer githubUrl={GITHUB_URL} liveUrl={LIVE_URL} />
 
       {showAddModal && (
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-ink-950/50 backdrop-blur-sm">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+            </div>
+          }
+        >
           <AddResourceModal
             onClose={() => setShowAddModal(false)}
             userLocation={userLocation}

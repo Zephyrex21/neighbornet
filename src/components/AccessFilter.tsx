@@ -27,7 +27,7 @@ export function AccessFilter({
           <button
             key={a}
             onClick={() => toggle(a)}
-            className={`rounded-full border px-3 py-1 text-[0.75rem] font-medium transition-all ${
+            className={`rounded-full border px-3 py-1 text-[0.75rem] font-medium transition active:scale-95 ${
               active
                 ? "border-transparent text-white"
                 : "border-ink-800/12 bg-white text-ash-600 hover:border-ink-800/25 dark:border-white/12 dark:bg-ink-900 dark:text-paper-300/70"

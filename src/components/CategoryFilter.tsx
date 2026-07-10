@@ -25,7 +25,7 @@ export function CategoryFilter({
           <button
             key={cat}
             onClick={() => toggle(cat)}
-            className={`flex items-center gap-1.5 rounded-lg border px-3.5 py-1.5 font-mono text-[0.78rem] font-medium uppercase tracking-wide transition-all ${
+            className={`flex items-center gap-1.5 rounded-lg border px-3.5 py-1.5 font-mono text-[0.78rem] font-medium uppercase tracking-wide transition active:scale-95 ${
               active
                 ? "border-transparent text-white shadow-sm"
                 : "border-ink-800/12 bg-white text-ash-600 hover:border-ink-800/25 dark:border-white/12 dark:bg-ink-900 dark:text-paper-300/70 dark:hover:border-white/25"

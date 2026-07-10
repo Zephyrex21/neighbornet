@@ -68,7 +68,7 @@ export function Navbar({
           </button>
           <button
             onClick={onAdd}
-            className="flex items-center gap-1.5 rounded-lg bg-accent-500 px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_-6px_rgba(99,102,241,0.8)] transition hover:bg-accent-600"
+            className="flex items-center gap-1.5 rounded-lg bg-accent-500 px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_-6px_rgba(99,102,241,0.8)] transition active:scale-95 hover:bg-accent-600"
           >
             <Plus size={16} strokeWidth={2.5} />
             <span className="hidden sm:inline">Add resource</span>

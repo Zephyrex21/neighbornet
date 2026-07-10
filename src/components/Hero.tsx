@@ -41,13 +41,13 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <button
                 onClick={scrollToExplore}
-                className="rounded-lg bg-accent-500 px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-6px_rgba(99,102,241,0.8)] transition hover:bg-accent-600"
+                className="rounded-lg bg-accent-500 px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-6px_rgba(99,102,241,0.8)] transition active:scale-95 hover:bg-accent-600"
               >
                 Explore the map
               </button>
               <button
                 onClick={onAdd}
-                className="rounded-lg border border-ink-800/15 bg-white/70 px-6 py-3 text-sm font-medium text-ink-800 backdrop-blur transition hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                className="rounded-lg border border-ink-800/15 bg-white/70 px-6 py-3 text-sm font-medium text-ink-800 backdrop-blur transition active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-white hover:bg-white dark:hover:bg-white/10"
               >
                 Add a resource
               </button>
