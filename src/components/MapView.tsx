@@ -1,11 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-import { divIcon } from "leaflet";
+import { divIcon, type DivIcon } from "leaflet";
 import { useEffect } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Navigation, Clock, Phone } from "lucide-react";
 import type { Resource } from "../lib/resources";
-import { CATEGORY_META } from "../lib/categories";
+import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 import { ACCESS_META } from "../lib/access";
 import type { Theme } from "../hooks/useTheme";
 
@@ -16,22 +16,28 @@ const TILE_URLS: Record<Theme, string> = {
   dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
 };
 
-function categoryIcon(category: Resource["category"]) {
-  const meta = CATEGORY_META[category];
-  const Icon = meta.icon;
-  const svg = renderToStaticMarkup(
-    <Icon color="white" size={14} strokeWidth={2.25} />
-  );
-  return divIcon({
-    className: "",
-    html: `<div style="background:${meta.color};width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(16,22,31,0.35);">
-      <div style="transform:rotate(45deg);display:flex;">${svg}</div>
-    </div>`,
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30],
-  });
+function buildCategoryIconCache(): Record<Category, DivIcon> {
+  const cache = {} as Record<Category, DivIcon>;
+  for (const category of CATEGORIES) {
+    const meta = CATEGORY_META[category];
+    const Icon = meta.icon;
+    const svg = renderToStaticMarkup(
+      <Icon color="white" size={14} strokeWidth={2.25} />
+    );
+    cache[category] = divIcon({
+      className: "",
+      html: `<div style="background:${meta.color};width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(16,22,31,0.35);">
+        <div style="transform:rotate(45deg);display:flex;">${svg}</div>
+      </div>`,
+      iconSize: [30, 30],
+      iconAnchor: [15, 30],
+      popupAnchor: [0, -30],
+    });
+  }
+  return cache;
 }
+
+const CATEGORY_ICONS = buildCategoryIconCache();
 
 const userIcon = divIcon({
   className: "",
@@ -41,6 +47,16 @@ const userIcon = divIcon({
   iconSize: [16, 16],
   iconAnchor: [8, 8],
 });
+
+function createClusterIcon(cluster: { getChildCount: () => number }) {
+  const count = cluster.getChildCount();
+  const size = count < 10 ? 34 : count < 50 ? 40 : count < 200 ? 46 : 52;
+  return divIcon({
+    html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:#4f46e5;border:3px solid white;box-shadow:0 2px 8px rgba(16,22,31,0.4);display:flex;align-items:center;justify-content:center;color:white;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:${count < 100 ? 12 : 11}px;">${count}</div>`,
+    className: "",
+    iconSize: [size, size],
+  });
+}
 
 function RecenterMap({ center }: { center: [number, number] | null }) {
   const map = useMap();
@@ -85,18 +101,10 @@ export function MapView({
         chunkedLoading
         maxClusterRadius={55}
         spiderfyOnMaxZoom
-        iconCreateFunction={(cluster: { getChildCount: () => number }) => {
-          const count = cluster.getChildCount();
-          const size = count < 10 ? 34 : count < 50 ? 40 : count < 200 ? 46 : 52;
-          return divIcon({
-            html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:#4f46e5;border:3px solid white;box-shadow:0 2px 8px rgba(16,22,31,0.4);display:flex;align-items:center;justify-content:center;color:white;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:${count < 100 ? 12 : 11}px;">${count}</div>`,
-            className: "",
-            iconSize: [size, size],
-          });
-        }}
+        iconCreateFunction={createClusterIcon}
       >
         {resources.map((r) => (
-        <Marker key={r.id} position={[r.lat, r.lng]} icon={categoryIcon(r.category)}>
+        <Marker key={r.id} position={[r.lat, r.lng]} icon={CATEGORY_ICONS[r.category]}>
           <Popup>
             <div style={{ minWidth: 190, fontFamily: "'Inter', sans-serif" }}>
               <div

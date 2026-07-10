@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { Clock, Phone, ArrowRight, Flag } from "lucide-react";
 import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
 import { ACCESS_META } from "../lib/access";
 import { formatDistance } from "../lib/distance";
 
-export function ResourceCard({
+function ResourceCardImpl({
   resource,
   distanceKm,
 }: {
@@ -14,7 +15,7 @@ export function ResourceCard({
   const meta = CATEGORY_META[resource.category];
   const Icon = meta.icon;
   return (
-    <div className="group rounded-xl border border-ink-800/10 bg-white p-4 transition-all hover:border-ink-800/20 hover:shadow-lg hover:shadow-ink-950/5 dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/20 dark:hover:shadow-black/20">
+    <div className="group rounded-xl border border-ink-800/10 bg-white p-4 transition hover:border-ink-800/20 hover:shadow-lg hover:shadow-ink-950/5 dark:border-white/10 dark:bg-ink-900 dark:hover:border-white/20 dark:hover:shadow-black/20">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-start gap-2.5">
           <span
@@ -96,3 +97,5 @@ export function ResourceCard({
     </div>
   );
 }
+
+export const ResourceCard = memo(ResourceCardImpl);

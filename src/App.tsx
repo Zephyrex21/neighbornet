@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Footer } from "./components/Footer";
@@ -7,11 +7,10 @@ import { CategoryFilter } from "./components/CategoryFilter";
 import { AccessFilter } from "./components/AccessFilter";
 import { SearchBar } from "./components/SearchBar";
 import { MapView } from "./components/MapView";
-import { ListView } from "./components/ListView";
-import { AddResourceModal } from "./components/AddResourceModal";
 import { useResources } from "./hooks/useResources";
 import { useGeolocation } from "./hooks/useGeolocation";
 import { useTheme } from "./hooks/useTheme";
+import { useDebouncedValue } from "./hooks/useDebouncedValue";
 import { CATEGORIES, CATEGORY_META, type Category } from "./lib/categories";
 import { ACCESS_TYPES, type AccessType } from "./lib/access";
 import { distanceKm } from "./lib/distance";
@@ -19,6 +18,13 @@ import { MapPin } from "lucide-react";
 
 const GITHUB_URL = "https://github.com/Zephyrex21/neighbornet";
 const LIVE_URL = "https://neighbornet-ten.vercel.app/";
+
+const AddResourceModal = lazy(() =>
+  import("./components/AddResourceModal").then((m) => ({ default: m.AddResourceModal }))
+);
+const ListView = lazy(() =>
+  import("./components/ListView").then((m) => ({ default: m.ListView }))
+);
 
 function App() {
   const { resources, loading } = useResources();
@@ -31,11 +37,13 @@ function App() {
   const [selectedAccess, setSelectedAccess] =
     useState<AccessType[]>(ACCESS_TYPES);
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebouncedValue(search, 200);
   const [showAddModal, setShowAddModal] = useState(false);
 
-  const userLocation: [number, number] | null = location
-    ? [location.lat, location.lng]
-    : null;
+  const userLocation: [number, number] | null = useMemo(
+    () => (location ? [location.lat, location.lng] : null),
+    [location]
+  );
 
   const filtered = useMemo(() => {
     let result = resources.filter(
@@ -43,8 +51,8 @@ function App() {
         selectedCategories.includes(r.category) &&
         selectedAccess.includes(r.access ?? "open")
     );
-    if (search.trim()) {
-      const q = search.trim().toLowerCase();
+    if (debouncedSearch.trim()) {
+      const q = debouncedSearch.trim().toLowerCase();
       result = result.filter(
         (r) =>
           r.name.toLowerCase().includes(q) ||
@@ -59,7 +67,7 @@ function App() {
       );
     }
     return result;
-  }, [resources, selectedCategories, selectedAccess, search, userLocation]);
+  }, [resources, selectedCategories, selectedAccess, debouncedSearch, userLocation]);
 
   const categoryCounts = useMemo(() => {
     const counts: Record<Category, number> = {
@@ -132,7 +140,15 @@ function App() {
           ) : view === "map" ? (
             <MapView resources={filtered} userLocation={userLocation} theme={theme} />
           ) : (
-            <ListView resources={filtered} userLocation={userLocation} />
+            <Suspense
+              fallback={
+                <div className="flex h-full items-center justify-center text-ash-500 dark:bg-ink-900 dark:text-paper-300/50">
+                  Loading list view…
+                </div>
+              }
+            >
+              <ListView resources={filtered} userLocation={userLocation} />
+            </Suspense>
           )}
         </div>
 
@@ -154,11 +170,13 @@ function App() {
       <Footer githubUrl={GITHUB_URL} liveUrl={LIVE_URL} />
 
       {showAddModal && (
-        <AddResourceModal
-          onClose={() => setShowAddModal(false)}
-          userLocation={userLocation}
-          theme={theme}
-        />
+        <Suspense fallback={null}>
+          <AddResourceModal
+            onClose={() => setShowAddModal(false)}
+            userLocation={userLocation}
+            theme={theme}
+          />
+        </Suspense>
       )}
     </div>
   );
