@@ -13,7 +13,7 @@ export function ViewToggle({
           onClick={() => onChange(v)}
           className={`rounded-md px-4 py-1.5 font-mono text-[0.8rem] font-medium uppercase tracking-wide transition-colors active:scale-95 ${
             view === v
-              ? "bg-ink-900 text-white dark:bg-accent-500"
+              ? "bg-ink-900 text-white dark:bg-gradient-brand"
               : "text-ash-600 hover:text-ink-950 dark:text-paper-300/60 dark:hover:text-white"
           }`}
         >

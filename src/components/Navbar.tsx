@@ -24,7 +24,7 @@ export function Navbar({
     <header className="sticky top-0 z-[100] border-b border-ink-800/8 bg-paper-50/90 backdrop-blur-md dark:border-white/8 dark:bg-ink-950/85">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
         <a href="#top" className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-500 text-white shadow-[0_0_20px_-4px_rgba(99,102,241,0.7)]">
+          <span className="bg-gradient-brand flex h-8 w-8 items-center justify-center rounded-lg text-white shadow-[0_0_20px_-4px_rgba(217,70,239,0.6)]">
             <MapPin size={16} strokeWidth={2.5} />
           </span>
           <span className="font-display text-[1.25rem] font-semibold tracking-tight text-ink-950 dark:text-white">
@@ -68,7 +68,7 @@ export function Navbar({
           </button>
           <button
             onClick={onAdd}
-            className="flex items-center gap-1.5 rounded-lg bg-accent-500 px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_-6px_rgba(99,102,241,0.8)] transition active:scale-95 hover:bg-accent-600"
+            className="bg-gradient-brand bg-gradient-brand-hover flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_-6px_rgba(217,70,239,0.65)] transition active:scale-95"
           >
             <Plus size={16} strokeWidth={2.5} />
             <span className="hidden sm:inline">Add resource</span>

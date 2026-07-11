@@ -14,7 +14,7 @@ export function Footer({
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent-500 text-white">
+              <span className="bg-gradient-brand flex h-7 w-7 items-center justify-center rounded-lg text-white">
                 <MapPin size={14} strokeWidth={2.5} />
               </span>
               <span className="font-display text-[1.1rem] font-semibold text-ink-950 dark:text-white">

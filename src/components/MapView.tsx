@@ -52,7 +52,7 @@ function createClusterIcon(cluster: { getChildCount: () => number }) {
   const count = cluster.getChildCount();
   const size = count < 10 ? 34 : count < 50 ? 40 : count < 200 ? 46 : 52;
   return divIcon({
-    html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:#4f46e5;border:3px solid white;box-shadow:0 2px 8px rgba(16,22,31,0.4);display:flex;align-items:center;justify-content:center;color:white;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:${count < 100 ? 12 : 11}px;">${count}</div>`,
+    html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#d946ef);border:3px solid white;box-shadow:0 2px 8px rgba(16,22,31,0.4);display:flex;align-items:center;justify-content:center;color:white;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:${count < 100 ? 12 : 11}px;">${count}</div>`,
     className: "",
     iconSize: [size, size],
   });

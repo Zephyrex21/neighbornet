@@ -16,10 +16,12 @@
   --color-paper-200: #e4e8ee;
   --color-paper-300: #d1d7e0;
 
-  /* Indigo accent — used sparingly for CTAs/links/glow, not everywhere */
-  --color-accent-400: #818cf8;
-  --color-accent-500: #6366f1;
-  --color-accent-600: #4f46e5;
+  /* Fuchsia accent — solid fallback for rings/borders/small UI; large
+     surfaces (buttons, hero, glows) use the full violet-fuchsia-amber
+     gradient defined via utility classes instead of a flat color. */
+  --color-accent-400: #e879f9;
+  --color-accent-500: #d946ef;
+  --color-accent-600: #c026d3;
 
   --color-ash-500: #64748b;
   --color-ash-600: #475569;
@@ -112,4 +114,56 @@ html.dark .leaflet-control-attribution {
 
 html.dark .leaflet-control-attribution a {
   color: var(--color-accent-400) !important;
+}
+
+/* Premium brand gradient — violet → fuchsia → amber. Used for primary
+   CTAs, active states, and text accents instead of a flat color. */
+.bg-gradient-brand {
+  background-image: linear-gradient(135deg, #8b5cf6 0%, #d946ef 50%, #f59e0b 100%);
+}
+
+.bg-gradient-brand-hover:hover {
+  background-image: linear-gradient(135deg, #7c3aed 0%, #c026d3 50%, #d97706 100%);
+}
+
+.text-gradient-brand {
+  background-image: linear-gradient(135deg, #a78bfa 0%, #e879f9 50%, #fbbf24 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Floating background orbs. transform/opacity only so the browser can
+   composite these on the GPU without triggering layout or paint on the
+   rest of the page. Contained + capped at 3 instances to bound blur cost. */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+  contain: layout paint;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .orb-1 { animation: orb-float-1 22s ease-in-out infinite; }
+  .orb-2 { animation: orb-float-2 28s ease-in-out infinite; }
+  .orb-3 { animation: orb-float-3 34s ease-in-out infinite; }
+}
+
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, 30px) scale(1.15); }
+  66% { transform: translate(-30px, 15px) scale(0.95); }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -35px) scale(1.1); }
+}
+
+@keyframes orb-float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(25px, -40px) scale(1.05); }
+  70% { transform: translate(-35px, -10px) scale(0.9); }
 }

@@ -18,7 +18,7 @@ const TILE_URLS: Record<Theme, string> = {
 const pickerIcon = divIcon({
   className: "",
   html: `<div style="display:flex;align-items:center;justify-content:center;transform:translateY(-50%);filter:drop-shadow(0 2px 4px rgba(16,22,31,0.4));">
-    ${renderToStaticMarkup(<MapPin size={32} color="#4f46e5" fill="#818cf8" strokeWidth={1.75} />)}
+    ${renderToStaticMarkup(<MapPin size={32} color="#c026d3" fill="#e879f9" strokeWidth={1.75} />)}
   </div>`,
   iconSize: [32, 32],
   iconAnchor: [16, 32],
@@ -278,7 +278,7 @@ export function AddResourceModal({
           <button
             onClick={handleSubmit}
             disabled={!canSubmit}
-            className="rounded-lg bg-accent-500 px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-accent-600 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="bg-gradient-brand bg-gradient-brand-hover rounded-lg px-5 py-2 text-sm font-medium text-white shadow-sm transition disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {submitting ? "Saving…" : "Add resource"}
           </button>

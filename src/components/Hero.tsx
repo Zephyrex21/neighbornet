@@ -13,8 +13,21 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
         className="relative scroll-mt-20 overflow-hidden bg-gradient-to-b from-paper-50 to-paper-100 dark:from-ink-950 dark:to-ink-900"
       >
         <div className="bg-grid absolute inset-0 opacity-60" />
-        <div className="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-accent-500/20 blur-[100px] dark:bg-accent-500/25" />
-        <div className="pointer-events-none absolute top-20 right-1/5 h-64 w-64 rounded-full bg-sky-500/15 blur-[100px] dark:bg-sky-500/20" />
+
+        {/* Floating gradient orbs — pure CSS animation (transform/opacity
+            only), capped at 3, disabled entirely under prefers-reduced-motion */}
+        <div
+          className="orb orb-1 -top-16 left-1/4 h-80 w-80 bg-violet-500/25 dark:bg-violet-500/30"
+          aria-hidden
+        />
+        <div
+          className="orb orb-2 top-10 right-[10%] h-72 w-72 bg-fuchsia-500/20 dark:bg-fuchsia-500/25"
+          aria-hidden
+        />
+        <div
+          className="orb orb-3 bottom-0 left-[15%] h-64 w-64 bg-amber-400/15 dark:bg-amber-400/20"
+          aria-hidden
+        />
 
         <div className="relative mx-auto max-w-7xl px-5 pt-16 pb-12 sm:px-8 sm:pt-24 sm:pb-16">
           <div className="max-w-2xl">
@@ -28,9 +41,7 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
 
             <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-ink-950 sm:text-[3.5rem] dark:text-white">
               Essential services,{" "}
-              <span className="bg-gradient-to-r from-accent-600 to-sky-600 bg-clip-text text-transparent dark:from-accent-400 dark:to-sky-400">
-                right where you are.
-              </span>
+              <span className="text-gradient-brand">right where you are.</span>
             </h1>
             <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-ash-600 dark:text-paper-300/70">
               NeighborNet maps free clinics, food banks, water points,
@@ -41,7 +52,7 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <button
                 onClick={scrollToExplore}
-                className="rounded-lg bg-accent-500 px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_-6px_rgba(99,102,241,0.8)] transition active:scale-95 hover:bg-accent-600"
+                className="bg-gradient-brand bg-gradient-brand-hover rounded-lg px-6 py-3 text-sm font-medium text-white shadow-[0_0_28px_-6px_rgba(217,70,239,0.55)] transition active:scale-95"
               >
                 Explore the map
               </button>
@@ -109,7 +120,7 @@ function Step({
 }) {
   return (
     <div>
-      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent-500 text-white shadow-[0_0_20px_-6px_rgba(99,102,241,0.6)]">
+      <span className="bg-gradient-brand flex h-10 w-10 items-center justify-center rounded-lg text-white shadow-[0_0_20px_-6px_rgba(217,70,239,0.5)]">
         {icon}
       </span>
       <h3 className="mt-4 font-display text-lg font-semibold text-ink-950 dark:text-white">
