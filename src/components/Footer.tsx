@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { MapPin, Code2, ExternalLink } from "lucide-react";
 import { CATEGORIES, CATEGORY_META } from "../lib/categories";
 
-export function Footer({
+function FooterImpl({
   githubUrl,
   liveUrl,
 }: {
@@ -97,3 +98,5 @@ export function Footer({
     </footer>
   );
 }
+
+export const Footer = memo(FooterImpl);

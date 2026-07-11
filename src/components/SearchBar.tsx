@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Search } from "lucide-react";
 
-export function SearchBar({
+function SearchBarImpl({
   value,
   onChange,
 }: {
@@ -23,3 +24,5 @@ export function SearchBar({
     </div>
   );
 }
+
+export const SearchBar = memo(SearchBarImpl);

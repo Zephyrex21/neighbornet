@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState, useTransition } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Footer } from "./components/Footer";
@@ -45,17 +45,21 @@ function App() {
   // Filter changes recompute the full resource list and rebuild map markers,
   // which is expensive at this data volume. Marking them as transitions lets
   // React keep the button's own click feedback instant while that heavier
-  // work happens without blocking input.
-  const setSelectedCategories = (value: Category[]) => {
+  // work happens without blocking input. Wrapped in useCallback so memoized
+  // child components (CategoryFilter, AccessFilter, ViewToggle) don't
+  // re-render just because App re-rendered for an unrelated reason.
+  const setSelectedCategories = useCallback((value: Category[]) => {
     startTransition(() => setSelectedCategoriesRaw(value));
-  };
-  const setSelectedAccess = (value: AccessType[]) => {
+  }, []);
+  const setSelectedAccess = useCallback((value: AccessType[]) => {
     startTransition(() => setSelectedAccessRaw(value));
-  };
-  const changeView = (value: "map" | "list") => {
+  }, []);
+  const changeView = useCallback((value: "map" | "list") => {
     if (value === "list") loadListView();
     startTransition(() => setView(value));
-  };
+  }, []);
+  const openAddModal = useCallback(() => setShowAddModal(true), []);
+  const closeAddModal = useCallback(() => setShowAddModal(false), []);
 
   useEffect(() => {
     // The Add Resource modal is small and commonly used soon after landing —
@@ -111,12 +115,12 @@ function App() {
   return (
     <div className="min-h-screen bg-paper-50 dark:bg-ink-950">
       <Navbar
-        onAdd={() => setShowAddModal(true)}
+        onAdd={openAddModal}
         githubUrl={GITHUB_URL}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
-      <Hero onAdd={() => setShowAddModal(true)} />
+      <Hero onAdd={openAddModal} />
 
       <section id="explore" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-12 sm:px-8 sm:py-16">
         <div className="mb-6 flex items-end justify-between gap-4">
@@ -210,7 +214,7 @@ function App() {
           }
         >
           <AddResourceModal
-            onClose={() => setShowAddModal(false)}
+            onClose={closeAddModal}
             userLocation={userLocation}
             theme={theme}
           />

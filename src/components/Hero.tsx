@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Search, Compass, Plus } from "lucide-react";
 import { CATEGORIES, CATEGORY_META } from "../lib/categories";
 
-export function Hero({ onAdd }: { onAdd: () => void }) {
+function HeroImpl({ onAdd }: { onAdd: () => void }) {
   const scrollToExplore = () => {
     document.getElementById("explore")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -14,18 +15,21 @@ export function Hero({ onAdd }: { onAdd: () => void }) {
       >
         <div className="bg-grid absolute inset-0 opacity-60" />
 
-        {/* Floating gradient orbs — pure CSS animation (transform/opacity
-            only), capped at 3, disabled entirely under prefers-reduced-motion */}
+        {/* Floating gradient orbs — radial-gradient, not filter:blur(), so
+            they're cheap to composite even while animating (see index.css) */}
         <div
-          className="orb orb-1 -top-16 left-1/4 h-80 w-80 bg-violet-500/25 dark:bg-violet-500/30"
+          className="orb orb-1 -top-16 left-1/4 h-80 w-80"
+          style={{ "--orb-color": "rgba(139,92,246,0.35)" } as React.CSSProperties}
           aria-hidden
         />
         <div
-          className="orb orb-2 top-10 right-[10%] h-72 w-72 bg-fuchsia-500/20 dark:bg-fuchsia-500/25"
+          className="orb orb-2 top-10 right-[10%] h-72 w-72"
+          style={{ "--orb-color": "rgba(217,70,239,0.28)" } as React.CSSProperties}
           aria-hidden
         />
         <div
-          className="orb orb-3 bottom-0 left-[15%] h-64 w-64 bg-amber-400/15 dark:bg-amber-400/20"
+          className="orb orb-3 bottom-0 left-[15%] h-64 w-64"
+          style={{ "--orb-color": "rgba(251,191,36,0.22)" } as React.CSSProperties}
           aria-hidden
         />
 
@@ -132,3 +136,5 @@ function Step({
     </div>
   );
 }
+
+export const Hero = memo(HeroImpl);

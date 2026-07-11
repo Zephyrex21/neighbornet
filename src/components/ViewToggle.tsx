@@ -1,4 +1,6 @@
-export function ViewToggle({
+import { memo } from "react";
+
+function ViewToggleImpl({
   view,
   onChange,
 }: {
@@ -23,3 +25,5 @@ export function ViewToggle({
     </div>
   );
 }
+
+export const ViewToggle = memo(ViewToggleImpl);

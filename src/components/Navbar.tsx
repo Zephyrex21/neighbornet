@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { MapPin, Code2, Plus, Menu, X, Sun, Moon } from "lucide-react";
 import type { Theme } from "../hooks/useTheme";
 
-export function Navbar({
+function NavbarImpl({
   onAdd,
   githubUrl,
   theme,
@@ -21,7 +21,7 @@ export function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-[100] border-b border-ink-800/8 bg-paper-50/90 backdrop-blur-md dark:border-white/8 dark:bg-ink-950/85">
+    <header className="sticky top-0 z-[100] border-b border-ink-800/8 bg-paper-50/95 backdrop-blur-sm dark:border-white/8 dark:bg-ink-950/90">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
         <a href="#top" className="flex items-center gap-2">
           <span className="bg-gradient-brand flex h-8 w-8 items-center justify-center rounded-lg text-white shadow-[0_0_20px_-4px_rgba(217,70,239,0.6)]">
@@ -114,3 +114,5 @@ export function Navbar({
     </header>
   );
 }
+
+export const Navbar = memo(NavbarImpl);

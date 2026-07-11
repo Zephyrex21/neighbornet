@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 
-export function CategoryFilter({
+function CategoryFilterImpl({
   selected,
   onChange,
 }: {
@@ -40,3 +41,5 @@ export function CategoryFilter({
     </div>
   );
 }
+
+export const CategoryFilter = memo(CategoryFilterImpl);

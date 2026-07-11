@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { divIcon, type DivIcon } from "leaflet";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Navigation, Clock, Phone } from "lucide-react";
 import type { Resource } from "../lib/resources";
@@ -66,7 +66,7 @@ function RecenterMap({ center }: { center: [number, number] | null }) {
   return null;
 }
 
-export function MapView({
+function MapViewImpl({
   resources,
   userLocation,
   theme,
@@ -99,6 +99,9 @@ export function MapView({
       )}
       <MarkerClusterGroup
         chunkedLoading
+        chunkInterval={100}
+        chunkDelay={30}
+        removeOutsideVisibleBounds
         maxClusterRadius={55}
         spiderfyOnMaxZoom
         iconCreateFunction={createClusterIcon}
@@ -165,3 +168,5 @@ export function MapView({
     </MapContainer>
   );
 }
+
+export const MapView = memo(MapViewImpl);

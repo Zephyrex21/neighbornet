@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { ACCESS_TYPES, ACCESS_META, type AccessType } from "../lib/access";
 
-export function AccessFilter({
+function AccessFilterImpl({
   selected,
   onChange,
 }: {
@@ -41,3 +42,5 @@ export function AccessFilter({
     </div>
   );
 }
+
+export const AccessFilter = memo(AccessFilterImpl);

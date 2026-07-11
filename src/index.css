@@ -139,10 +139,15 @@ html.dark .leaflet-control-attribution a {
 .orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(90px);
   pointer-events: none;
   will-change: transform;
-  contain: layout paint;
+  contain: strict;
+  /* A radial gradient that fades to transparent achieves the same soft-glow
+     look as filter: blur() at a fraction of the render cost — blur has to
+     be resampled by the compositor on every frame it's visible, a gradient
+     is just a paint. This is the difference between smooth and janky on
+     mid-range phones. */
+  background-image: radial-gradient(circle at center, var(--orb-color) 0%, transparent 70%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
