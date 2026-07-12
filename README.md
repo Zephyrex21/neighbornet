@@ -4,7 +4,13 @@
 
 A modern community-driven platform for discovering nearby resources through an interactive map and intuitive search experience.
 
-Live Demo • Report Issues • Request Features
+<p>
+  <a href="https://neighbornet-ten.vercel.app/" target="_blank"><strong>Live Demo</strong></a>
+  ·
+  <a href="https://github.com/Zephyrex21/neighbornet/issues"><strong>Report Issues</strong></a>
+  ·
+  <a href="https://github.com/Zephyrex21/neighbornet/issues"><strong>Request Features</strong></a>
+</p>
 
 </div>
 
@@ -12,26 +18,26 @@ Live Demo • Report Issues • Request Features
 
 ## Overview
 
-NeighborNet helps users explore nearby community resources using an interactive map and a searchable list interface. Whether it's public facilities, local services, or community spaces, the platform provides a fast and responsive way to discover resources based on location, category, and accessibility.
+NeighborNet is a modern community resource discovery platform that helps users explore nearby places through an interactive map and an intuitive list interface. Whether it's public facilities, local services, or community spaces, the platform enables fast and seamless discovery based on location, category, and accessibility.
 
-Built with modern React technologies and optimized for performance, NeighborNet emphasizes smooth user experience, scalable architecture, and clean component design.
+Built with a modern React ecosystem, NeighborNet emphasizes performance, scalability, and a clean user experience while leveraging Firebase for real-time data management and Leaflet for interactive mapping.
 
 ---
 
 ## Features
 
 - Interactive map powered by Leaflet
-- Clustered map markers for improved readability
-- Real-time location detection
-- Search with debounced input
-- Category-based filtering
+- Marker clustering for improved map readability
+- Real-time geolocation support
+- Debounced search experience
+- Category-based resource filtering
 - Accessibility filters
-- Responsive map and list views
+- Responsive map and list layouts
 - Dark and light theme support
 - Community resource submission
-- Virtualized lists for large datasets
+- Virtualized rendering for large datasets
 - Lazy-loaded components for faster initial load
-- Firebase integration for persistent data
+- Firebase Firestore integration
 
 ---
 
@@ -41,60 +47,28 @@ Built with modern React technologies and optimized for performance, NeighborNet 
 |----------|--------------|
 | Frontend | React 19, TypeScript, Vite |
 | Styling | Tailwind CSS v4 |
-| Maps | Leaflet, React Leaflet |
-| Database | Firebase Firestore |
+| Maps | Leaflet, React Leaflet, React Leaflet Cluster |
+| Backend | Firebase |
+| Database | Cloud Firestore |
 | Icons | Lucide React |
 | Performance | React Virtuoso, React Lazy, Suspense |
 | Linting | Oxlint |
 
 ---
 
-## Project Structure
-
-```text
-src
-├── components
-├── hooks
-├── lib
-├── App.tsx
-└── main.tsx
-```
-
-### Components
-
-- Navbar
-- Hero
-- MapView
-- ListView
-- SearchBar
-- ResourceCard
-- AddResourceModal
-- CategoryFilter
-- AccessFilter
-- Footer
-
-### Custom Hooks
-
-- useResources
-- useGeolocation
-- useTheme
-- useDebouncedValue
-
----
-
 ## Performance Optimizations
 
-NeighborNet incorporates several modern optimization techniques:
+NeighborNet incorporates several modern optimization techniques to ensure a smooth user experience.
 
-- Lazy-loaded routes and components
-- Code splitting with React.lazy()
-- Suspense boundaries
-- React 19 transitions
-- Memoized computations using useMemo()
-- Stable callbacks with useCallback()
+- Lazy-loaded components using `React.lazy()`
+- Code splitting with Suspense
+- React 19 concurrent rendering with `useTransition()`
+- Memoized computations using `useMemo()`
+- Stable callbacks using `useCallback()`
 - Debounced search input
-- Virtualized rendering using React Virtuoso
+- Virtualized resource lists using React Virtuoso
 - Idle-time component prefetching
+- Optimized map marker clustering
 
 ---
 
@@ -118,7 +92,7 @@ cd neighbornet
 npm install
 ```
 
-### Start development server
+### Start the development server
 
 ```bash
 npm run dev
@@ -142,9 +116,9 @@ npm run preview
 
 ## Screenshots
 
-> Add screenshots here.
+> Screenshots will be added soon.
 
-- Home
+- Home Page
 - Interactive Map
 - Resource List
 - Dark Theme
@@ -155,13 +129,13 @@ npm run preview
 ## Future Improvements
 
 - User authentication
-- Resource reviews and ratings
 - Favorites and bookmarks
-- Offline support
-- Progressive Web App
+- Resource reviews and ratings
+- Progressive Web App support
+- Offline caching
 - Image uploads
 - AI-powered recommendations
-- Advanced filtering
+- Advanced search and filtering
 
 ---
 
@@ -169,10 +143,10 @@ npm run preview
 
 Contributions are welcome.
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Open a Pull Request
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a Pull Request.
 
 ---
 
