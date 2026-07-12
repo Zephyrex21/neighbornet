@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { divIcon } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -65,8 +65,26 @@ export function AddResourceModal({
   );
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   const canSubmit = name.trim() && address.trim() && position && !submitting;
+
+  // Bug fix: if the modal is opened before geolocation resolves (e.g. the
+  // user clicks "Add resource" immediately on page load), `position` was
+  // initialized to null and never updated once userLocation arrived later.
+  // Only auto-fill if the user hasn't already picked a spot themselves.
+  useEffect(() => {
+    if (!position && userLocation) {
+      setPosition(userLocation);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userLocation]);
+
+  useEffect(() => {
+    // Move focus into the modal for keyboard/screen-reader users instead of
+    // leaving it on whatever triggered the open.
+    nameInputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -115,16 +133,19 @@ export function AddResourceModal({
       onClick={onClose}
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="add-resource-title"
         className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-paper-50 shadow-2xl dark:bg-ink-900"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-ink-800/10 px-6 py-5 dark:border-white/10">
-          <h2 className="font-display text-xl font-semibold text-ink-950 dark:text-white">
+          <h2 id="add-resource-title" className="font-display text-xl font-semibold text-ink-950 dark:text-white">
             Add a resource
           </h2>
           <button
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-ash-500 transition hover:bg-ink-800/8 hover:text-ink-950 dark:text-paper-300/60 dark:hover:bg-white/10 dark:hover:text-white"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-ash-500 transition active:scale-95 hover:bg-ink-800/8 hover:text-ink-950 dark:text-paper-300/60 dark:hover:bg-white/10 dark:hover:text-white"
             aria-label="Close"
           >
             <X size={18} />
@@ -135,6 +156,7 @@ export function AddResourceModal({
           <div>
             <label className={labelClass}>Name</label>
             <input
+              ref={nameInputRef}
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Community Health Clinic"
@@ -154,7 +176,7 @@ export function AddResourceModal({
                     key={cat}
                     type="button"
                     onClick={() => setCategory(cat)}
-                    className={`flex items-center gap-1.5 rounded-lg border px-3.5 py-1.5 font-mono text-[0.8rem] font-medium uppercase tracking-wide transition-all ${
+                    className={`flex items-center gap-1.5 rounded-lg border px-3.5 py-1.5 font-mono text-[0.8rem] font-medium uppercase tracking-wide transition active:scale-95 ${
                       active
                         ? "border-transparent text-white shadow-sm"
                         : "border-ink-800/12 text-ash-600 dark:border-white/12 dark:text-paper-300/70"
@@ -180,7 +202,7 @@ export function AddResourceModal({
                     key={a}
                     type="button"
                     onClick={() => setAccess(a)}
-                    className={`rounded-lg border px-3.5 py-1.5 text-left text-[0.8rem] font-medium transition-all ${
+                    className={`rounded-lg border px-3.5 py-1.5 text-left text-[0.8rem] font-medium transition active:scale-95 ${
                       active
                         ? "border-transparent text-white shadow-sm"
                         : "border-ink-800/12 text-ash-600 dark:border-white/12 dark:text-paper-300/70"
@@ -271,14 +293,14 @@ export function AddResourceModal({
         <div className="flex justify-end gap-2 border-t border-ink-800/10 px-6 py-4 dark:border-white/10">
           <button
             onClick={onClose}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-ash-600 transition hover:bg-ink-800/8 dark:text-paper-300/70 dark:hover:bg-white/10"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-ash-600 transition active:scale-95 hover:bg-ink-800/8 dark:text-paper-300/70 dark:hover:bg-white/10"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
             disabled={!canSubmit}
-            className="bg-gradient-brand bg-gradient-brand-hover rounded-lg px-5 py-2 text-sm font-medium text-white shadow-sm transition disabled:opacity-40 disabled:cursor-not-allowed"
+            className="bg-gradient-brand bg-gradient-brand-hover rounded-lg px-5 py-2 text-sm font-medium text-white shadow-sm transition active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {submitting ? "Saving…" : "Add resource"}
           </button>

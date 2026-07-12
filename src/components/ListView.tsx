@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, memo } from "react";
 import { VirtuosoGrid } from "react-virtuoso";
 import type { Resource } from "../lib/resources";
 import { ResourceCard } from "./ResourceCard";
@@ -22,7 +22,7 @@ function GridItem({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) 
   return <div {...props}>{children}</div>;
 }
 
-export function ListView({
+function ListViewImpl({
   resources,
   userLocation,
 }: {
@@ -65,3 +65,5 @@ export function ListView({
     />
   );
 }
+
+export const ListView = memo(ListViewImpl);

@@ -31,15 +31,25 @@ const COLLECTION = "resources";
 
 /** Subscribe to live updates of all resources. Returns an unsubscribe fn. */
 export function subscribeResources(
-  onUpdate: (resources: Resource[]) => void
+  onUpdate: (resources: Resource[]) => void,
+  onError?: (error: Error) => void
 ): () => void {
   const q = query(collection(db, COLLECTION), orderBy("createdAt", "desc"));
-  return onSnapshot(q, (snapshot) => {
-    const resources = snapshot.docs.map(
-      (doc) => ({ id: doc.id, ...doc.data() } as Resource)
-    );
-    onUpdate(resources);
-  });
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const resources = snapshot.docs.map(
+        (doc) => ({ id: doc.id, ...doc.data() } as Resource)
+      );
+      onUpdate(resources);
+    },
+    (error) => {
+      // Without this, a Firestore failure (network, rules, quota) leaves
+      // the app silently stuck on "Loading resources..." forever.
+      console.error("Failed to load resources:", error);
+      onError?.(error);
+    }
+  );
 }
 
 export async function addResource(resource: NewResource): Promise<void> {

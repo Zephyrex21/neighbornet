@@ -28,11 +28,12 @@ const AddResourceModal = lazy(loadAddResourceModal);
 const ListView = lazy(loadListView);
 
 function App() {
-  const { resources, loading } = useResources();
+  const { resources, loading, error: resourcesError } = useResources();
   const { location, locate, loading: locating, error: locationError } = useGeolocation();
   const { theme, toggleTheme } = useTheme();
 
   const [view, setView] = useState<"map" | "list">("map");
+  const [hasShownList, setHasShownList] = useState(false);
   const [selectedCategories, setSelectedCategoriesRaw] =
     useState<Category[]>(CATEGORIES);
   const [selectedAccess, setSelectedAccessRaw] =
@@ -55,7 +56,10 @@ function App() {
     startTransition(() => setSelectedAccessRaw(value));
   }, []);
   const changeView = useCallback((value: "map" | "list") => {
-    if (value === "list") loadListView();
+    if (value === "list") {
+      loadListView();
+      setHasShownList(true);
+    }
     startTransition(() => setView(value));
   }, []);
   const openAddModal = useCallback(() => setShowAddModal(true), []);
@@ -95,11 +99,17 @@ function App() {
       );
     }
     if (userLocation) {
-      result = [...result].sort(
-        (a, b) =>
-          distanceKm(userLocation[0], userLocation[1], a.lat, a.lng) -
-          distanceKm(userLocation[0], userLocation[1], b.lat, b.lng)
-      );
+      // Compute each resource's distance once (O(n)) instead of inside the
+      // sort comparator, which would recompute it on every comparison
+      // (O(n log n) — the same resource's distance calculated many times
+      // over during a single sort).
+      result = result
+        .map((r) => ({
+          r,
+          d: distanceKm(userLocation[0], userLocation[1], r.lat, r.lng),
+        }))
+        .sort((a, b) => a.d - b.d)
+        .map(({ r }) => r);
     }
     return result;
   }, [resources, selectedCategories, selectedAccess, debouncedSearch, userLocation]);
@@ -169,29 +179,71 @@ function App() {
         </div>
 
         <div className="relative isolate z-0 h-[70vh] overflow-hidden rounded-b-2xl border border-t-0 border-ink-800/10 shadow-sm transition-opacity dark:border-white/10" style={{ opacity: isPending ? 0.7 : 1 }}>
-          {loading ? (
+          {resourcesError ? (
+            <div className="flex h-full flex-col items-center justify-center gap-2 bg-paper-100 px-6 text-center dark:bg-ink-900">
+              <p className="font-display text-lg text-ink-950 dark:text-white">
+                Something went wrong
+              </p>
+              <p className="max-w-sm text-sm text-ash-500 dark:text-paper-300/50">
+                {resourcesError}
+              </p>
+              <button
+                onClick={() => window.location.reload()}
+                className="mt-2 rounded-lg border border-ink-800/15 px-4 py-2 text-sm font-medium text-ink-800 transition active:scale-95 hover:bg-ink-800/8 dark:border-white/15 dark:text-white dark:hover:bg-white/10"
+              >
+                Reload
+              </button>
+            </div>
+          ) : loading ? (
             <div className="flex h-full items-center justify-center text-ash-500 dark:bg-ink-900 dark:text-paper-300/50">
               Loading resources…
             </div>
-          ) : view === "map" ? (
-            <MapView resources={filtered} userLocation={userLocation} theme={theme} />
           ) : (
-            <Suspense
-              fallback={
-                <div className="flex h-full items-center justify-center text-ash-500 dark:bg-ink-900 dark:text-paper-300/50">
-                  Loading list view…
+            <>
+              {/* Both views mount once and stay mounted — toggling `view`
+                  only changes CSS visibility. Conditionally unmounting
+                  MapView here would destroy and rebuild the entire Leaflet
+                  map (tiles + all 744 clustered markers) every single time
+                  the user clicked the view toggle, which was the single
+                  biggest cause of that button feeling slow. */}
+              <div
+                className="absolute inset-0"
+                style={
+                  view === "map"
+                    ? { visibility: "visible" }
+                    : { visibility: "hidden", pointerEvents: "none" }
+                }
+              >
+                <MapView resources={filtered} userLocation={userLocation} theme={theme} />
+              </div>
+              {hasShownList && (
+                <div
+                  className="absolute inset-0"
+                  style={
+                    view === "list"
+                      ? { visibility: "visible" }
+                      : { visibility: "hidden", pointerEvents: "none" }
+                  }
+                >
+                  <Suspense
+                    fallback={
+                      <div className="flex h-full items-center justify-center text-ash-500 dark:bg-ink-900 dark:text-paper-300/50">
+                        Loading list view…
+                      </div>
+                    }
+                  >
+                    <ListView resources={filtered} userLocation={userLocation} />
+                  </Suspense>
                 </div>
-              }
-            >
-              <ListView resources={filtered} userLocation={userLocation} />
-            </Suspense>
+              )}
+            </>
           )}
         </div>
 
         <button
           onClick={locate}
           disabled={locating}
-          className="mt-4 flex items-center gap-1.5 rounded-lg border border-ink-800/15 bg-white px-4 py-2 text-sm font-medium text-ink-800 shadow-sm transition hover:border-ink-800/30 disabled:opacity-50 dark:border-white/15 dark:bg-ink-900 dark:text-white dark:hover:border-white/30"
+          className="mt-4 flex items-center gap-1.5 rounded-lg border border-ink-800/15 bg-white px-4 py-2 text-sm font-medium text-ink-800 shadow-sm transition active:scale-95 hover:border-ink-800/30 disabled:opacity-50 dark:border-white/15 dark:bg-ink-900 dark:text-white dark:hover:border-white/30"
         >
           <MapPin size={15} />
           {locating ? "Locating…" : "Use my location"}
