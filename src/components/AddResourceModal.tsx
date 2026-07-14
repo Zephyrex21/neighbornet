@@ -6,6 +6,7 @@ import { X, MapPin } from "lucide-react";
 import { CATEGORIES, CATEGORY_META, type Category } from "../lib/categories";
 import { ACCESS_TYPES, ACCESS_META, type AccessType } from "../lib/access";
 import { addResource } from "../lib/resources";
+import { canSubmit as canSubmitRateLimit, recordSubmission } from "../lib/rateLimit";
 import type { Theme } from "../hooks/useTheme";
 
 const INDIA_CENTER: [number, number] = [21.1458, 79.0882];
@@ -60,6 +61,7 @@ export function AddResourceModal({
   const [hours, setHours] = useState("");
   const [contact, setContact] = useState("");
   const [description, setDescription] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // bots fill every field; real users never see this one
   const [position, setPosition] = useState<[number, number] | null>(
     userLocation
   );
@@ -103,6 +105,19 @@ export function AddResourceModal({
       setError("Please pick a location by clicking the map.");
       return;
     }
+    if (honeypot.trim()) {
+      // Silently "succeed" for bots — don't reveal the honeypot exists by
+      // showing an error, just skip the actual write.
+      onClose();
+      return;
+    }
+    const rateCheck = canSubmitRateLimit();
+    if (!rateCheck.allowed) {
+      setError(
+        `You've added several resources recently. Please try again in about ${rateCheck.retryAfterMinutes} minute${rateCheck.retryAfterMinutes === 1 ? "" : "s"}.`
+      );
+      return;
+    }
     setSubmitting(true);
     setError(null);
     try {
@@ -118,6 +133,7 @@ export function AddResourceModal({
         description: description.trim() || undefined,
         source: "user",
       });
+      recordSubmission();
       onClose();
     } catch (e) {
       setError("Couldn't save. Please try again.");
@@ -153,6 +169,25 @@ export function AddResourceModal({
         </div>
 
         <div className="p-6 space-y-5">
+          {/* Honeypot: hidden from sighted users and skipped by screen
+              readers/keyboard nav, but present in the DOM for simple bots
+              that fill every input they find. Real users never touch it. */}
+          <div
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}
+          >
+            <label htmlFor="website">Website</label>
+            <input
+              id="website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+            />
+          </div>
+
           <div>
             <label className={labelClass}>Name</label>
             <input

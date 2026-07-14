@@ -13,7 +13,7 @@ import { useTheme } from "./hooks/useTheme";
 import { useDebouncedValue } from "./hooks/useDebouncedValue";
 import { CATEGORIES, CATEGORY_META, type Category } from "./lib/categories";
 import { ACCESS_TYPES, type AccessType } from "./lib/access";
-import { distanceKm } from "./lib/distance";
+import { filterAndSortResources } from "./lib/filterResources";
 import { MapPin } from "lucide-react";
 
 const GITHUB_URL = "https://github.com/Zephyrex21/neighbornet";
@@ -84,35 +84,16 @@ function App() {
     [location]
   );
 
-  const filtered = useMemo(() => {
-    let result = resources.filter(
-      (r) =>
-        selectedCategories.includes(r.category) &&
-        selectedAccess.includes(r.access ?? "open")
-    );
-    if (debouncedSearch.trim()) {
-      const q = debouncedSearch.trim().toLowerCase();
-      result = result.filter(
-        (r) =>
-          r.name.toLowerCase().includes(q) ||
-          r.address.toLowerCase().includes(q)
-      );
-    }
-    if (userLocation) {
-      // Compute each resource's distance once (O(n)) instead of inside the
-      // sort comparator, which would recompute it on every comparison
-      // (O(n log n) — the same resource's distance calculated many times
-      // over during a single sort).
-      result = result
-        .map((r) => ({
-          r,
-          d: distanceKm(userLocation[0], userLocation[1], r.lat, r.lng),
-        }))
-        .sort((a, b) => a.d - b.d)
-        .map(({ r }) => r);
-    }
-    return result;
-  }, [resources, selectedCategories, selectedAccess, debouncedSearch, userLocation]);
+  const filtered = useMemo(
+    () =>
+      filterAndSortResources(resources, {
+        selectedCategories,
+        selectedAccess,
+        search: debouncedSearch,
+        userLocation,
+      }),
+    [resources, selectedCategories, selectedAccess, debouncedSearch, userLocation]
+  );
 
   const categoryCounts = useMemo(() => {
     const counts: Record<Category, number> = {

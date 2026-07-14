@@ -1,163 +1,32 @@
-<div align="center">
+# React + TypeScript + Vite
 
-# NeighborNet
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-A modern community-driven platform for discovering nearby resources through an interactive map and intuitive search experience.
+Currently, two official plugins are available:
 
-<p>
-  <a href="https://neighbornet-ten.vercel.app/" target="_blank"><strong>Live Demo</strong></a>
-  ·
-  <a href="https://github.com/Zephyrex21/neighbornet/issues"><strong>Report Issues</strong></a>
-  ·
-  <a href="https://github.com/Zephyrex21/neighbornet/issues"><strong>Request Features</strong></a>
-</p>
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-</div>
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Overview
+## Expanding the Oxlint configuration
 
-NeighborNet is a modern community resource discovery platform that helps users explore nearby places through an interactive map and an intuitive list interface. Whether it's public facilities, local services, or community spaces, the platform enables fast and seamless discovery based on location, category, and accessibility.
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-Built with a modern React ecosystem, NeighborNet emphasizes performance, scalability, and a clean user experience while leveraging Firebase for real-time data management and Leaflet for interactive mapping.
-
----
-
-## Features
-
-- Interactive map powered by Leaflet
-- Marker clustering for improved map readability
-- Real-time geolocation support
-- Debounced search experience
-- Category-based resource filtering
-- Accessibility filters
-- Responsive map and list layouts
-- Dark and light theme support
-- Community resource submission
-- Virtualized rendering for large datasets
-- Lazy-loaded components for faster initial load
-- Firebase Firestore integration
-
----
-
-## Tech Stack
-
-| Category | Technologies |
-|----------|--------------|
-| Frontend | React 19, TypeScript, Vite |
-| Styling | Tailwind CSS v4 |
-| Maps | Leaflet, React Leaflet, React Leaflet Cluster |
-| Backend | Firebase |
-| Database | Cloud Firestore |
-| Icons | Lucide React |
-| Performance | React Virtuoso, React Lazy, Suspense |
-| Linting | Oxlint |
-
----
-
-## Performance Optimizations
-
-NeighborNet incorporates several modern optimization techniques to ensure a smooth user experience.
-
-- Lazy-loaded components using `React.lazy()`
-- Code splitting with Suspense
-- React 19 concurrent rendering with `useTransition()`
-- Memoized computations using `useMemo()`
-- Stable callbacks using `useCallback()`
-- Debounced search input
-- Virtualized resource lists using React Virtuoso
-- Idle-time component prefetching
-- Optimized map marker clustering
-
----
-
-## Getting Started
-
-### Clone the repository
-
-```bash
-git clone https://github.com/Zephyrex21/neighbornet.git
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
 ```
 
-### Navigate into the project
-
-```bash
-cd neighbornet
-```
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Start the development server
-
-```bash
-npm run dev
-```
-
----
-
-## Build for Production
-
-```bash
-npm run build
-```
-
-Preview the production build:
-
-```bash
-npm run preview
-```
-
----
-
-## Screenshots
-
-> Screenshots will be added soon.
-
-- Home Page
-- Interactive Map
-- Resource List
-- Dark Theme
-- Add Resource Modal
-
----
-
-## Future Improvements
-
-- User authentication
-- Favorites and bookmarks
-- Resource reviews and ratings
-- Progressive Web App support
-- Offline caching
-- Image uploads
-- AI-powered recommendations
-- Advanced search and filtering
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Open a Pull Request.
-
----
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-<div align="center">
-
-Built with React, TypeScript, Firebase, and Leaflet.
-
-</div>
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

@@ -3,6 +3,7 @@ import {
   onSnapshot,
   addDoc,
   Timestamp,
+  serverTimestamp,
   query,
   orderBy,
 } from "firebase/firestore";
@@ -60,6 +61,10 @@ export async function addResource(resource: NewResource): Promise<void> {
   );
   await addDoc(collection(db, COLLECTION), {
     ...clean,
-    createdAt: Timestamp.now(),
+    // serverTimestamp() is a sentinel Firestore replaces with the actual
+    // server time at write time — this is what lets the security rule
+    // verify createdAt == request.time. A client-set Timestamp.now() would
+    // never exactly match the server's clock and would fail that check.
+    createdAt: serverTimestamp(),
   });
 }

@@ -1,9 +1,10 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Clock, Phone, ArrowRight, Flag } from "lucide-react";
 import type { Resource } from "../lib/resources";
 import { CATEGORY_META } from "../lib/categories";
 import { ACCESS_META } from "../lib/access";
 import { formatDistance } from "../lib/distance";
+import { ReportIssueModal } from "./ReportIssueModal";
 
 function ResourceCardImpl({
   resource,
@@ -12,6 +13,7 @@ function ResourceCardImpl({
   resource: Resource;
   distanceKm?: number;
 }) {
+  const [showReport, setShowReport] = useState(false);
   const meta = CATEGORY_META[resource.category];
   const Icon = meta.icon;
   return (
@@ -82,18 +84,17 @@ function ResourceCardImpl({
         >
           Get directions <ArrowRight size={14} />
         </a>
-        <a
-          href={`mailto:venom013524@gmail.com?subject=${encodeURIComponent(
-            `Issue with listing: ${resource.name}`
-          )}&body=${encodeURIComponent(
-            `Please describe what's outdated or incorrect about this listing:\n\n---\n${resource.name}\n${resource.address}`
-          )}`}
+        <button
+          onClick={() => setShowReport(true)}
           className="inline-flex items-center gap-1 text-[0.72rem] font-medium text-ash-500 transition hover:text-ash-600 dark:text-paper-300/40 dark:hover:text-paper-300/70"
           title="Report outdated or incorrect information"
         >
           <Flag size={12} /> Report issue
-        </a>
+        </button>
       </div>
+      {showReport && (
+        <ReportIssueModal resource={resource} onClose={() => setShowReport(false)} />
+      )}
     </div>
   );
 }

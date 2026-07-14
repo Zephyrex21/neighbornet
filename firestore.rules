@@ -1,9 +1,18 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
     match /resources/{id} {
       allow read: if true;
-      allow create: if request.resource.data.name is string
+
+      allow create: if
+        // Only the fields we actually expect — blocks arbitrary data
+        // injection into documents beyond the schema.
+        request.resource.data.keys().hasOnly(
+          ['name','category','access','lat','lng','address','hours',
+           'contact','description','source','createdAt']
+        )
+        && request.resource.data.name is string
         && request.resource.data.name.size() > 0
         && request.resource.data.name.size() < 100
         && request.resource.data.category in
@@ -11,9 +20,51 @@ service cloud.firestore {
         && request.resource.data.access in
            ['open','insured','registered']
         && request.resource.data.lat is number
+        && request.resource.data.lat >= -90
+        && request.resource.data.lat <= 90
         && request.resource.data.lng is number
+        && request.resource.data.lng >= -180
+        && request.resource.data.lng <= 180
         && request.resource.data.address is string
-        && request.resource.data.address.size() < 200;
+        && request.resource.data.address.size() > 0
+        && request.resource.data.address.size() < 200
+        && request.resource.data.hours is string
+        && request.resource.data.hours.size() < 100
+        // `source` can only ever be "user" from a public client write —
+        // without this, anyone could submit source: "seed" and have their
+        // entry masquerade as one of the verified/researched listings.
+        && request.resource.data.source == 'user'
+        // createdAt must be a real server-consistent timestamp, not a
+        // client-fabricated date used to backdate or forward-date entries.
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.createdAt == request.time
+        && (!('contact' in request.resource.data)
+            || (request.resource.data.contact is string
+                && request.resource.data.contact.size() < 100))
+        && (!('description' in request.resource.data)
+            || (request.resource.data.description is string
+                && request.resource.data.description.size() < 250));
+
+      // No public updates or deletes — the only way data changes after
+      // creation is through the seed script (admin SDK, bypasses rules)
+      // or a future authenticated moderation flow.
+      allow update, delete: if false;
+    }
+
+    match /reports/{id} {
+      allow read: if false; // no public admin view yet — see PRODUCTION.md
+      allow create: if
+        request.resource.data.keys().hasOnly(
+          ['resourceId','resourceName','message','status','createdAt']
+        )
+        && request.resource.data.resourceId is string
+        && request.resource.data.resourceName is string
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() < 500
+        && request.resource.data.status == 'open'
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.createdAt == request.time;
       allow update, delete: if false;
     }
   }
