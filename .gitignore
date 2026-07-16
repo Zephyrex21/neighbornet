@@ -1,6 +1,11 @@
 node_modules
 dist
+coverage
 .env
 .env.local
 .DS_Store
 *.log
+
+# Firebase Admin SDK service account key — this is a real credential with
+# full trusted access to your Firestore database. NEVER commit this file.
+serviceAccountKey.json

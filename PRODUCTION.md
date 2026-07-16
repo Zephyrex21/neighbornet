@@ -156,6 +156,27 @@ the actual sequence verified locally above, not a guess at what CI
 
 ---
 
+## Correction — seed.mjs / clear-seed.mjs now actually use the Admin SDK
+
+The original Phase 1 writeup claimed the seed script "bypasses rules via
+Admin SDK" as if that were already true. It wasn't — `seed.mjs` and
+`clear-seed.mjs` had always used the regular client SDK, the same one the
+public website uses. That meant they were bound by the same security
+rules as any visitor, including the new `source == 'user'` requirement
+added in Phase 1 (which exists specifically to stop a public client from
+faking `source: 'seed'`). The seed script needs to write `source: 'seed'`
+— so it was blocking its own writes with permission-denied errors.
+
+Fixed by actually switching both scripts to `firebase-admin`, which
+authenticates via a service account key and genuinely bypasses security
+rules, rather than trying to loosen the rules (which would have reopened
+the exact vulnerability they exist to close). This requires a one-time
+setup step — see the instructions at the top of `seed.mjs`. The service
+account key file is a real credential and is in `.gitignore`; it must
+never be committed.
+
+---
+
 ## Deferred — Phase 4 (monitoring + admin auth)
 
 ## Explicitly not built, and why

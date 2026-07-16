@@ -1,44 +1,51 @@
 // Run this BEFORE re-running seed.mjs if you've already seeded before and
-// your seed-data.json has grown since then. This deletes only entries with
-// source: "seed" (never touches user-submitted entries with source: "user"),
-// so you can safely re-seed without ending up with duplicates.
+// your seed-data.json has grown/changed since then. This deletes only
+// entries with source: "seed" (never touches user-submitted entries with
+// source: "user"), so you can safely re-seed without ending up with
+// duplicates.
+//
+// Uses the Firebase Admin SDK — see seed.mjs for setup instructions
+// (you need serviceAccountKey.json in this folder).
 //
 // Usage:
 //   node clear-seed.mjs
 
-import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
-  deleteDoc,
-} from "firebase/firestore";
+import { initializeApp, cert } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { readFileSync } from "fs";
 
-// PASTE THE SAME CONFIG YOU PUT IN src/lib/firebase.ts
-const firebaseConfig = {
-  apiKey: "REPLACE_ME",
-  authDomain: "REPLACE_ME.firebaseapp.com",
-  projectId: "REPLACE_ME",
-  storageBucket: "REPLACE_ME.appspot.com",
-  messagingSenderId: "REPLACE_ME",
-  appId: "REPLACE_ME",
-};
+let serviceAccount;
+try {
+  serviceAccount = JSON.parse(readFileSync("./serviceAccountKey.json", "utf-8"));
+} catch {
+  console.error(
+    "Couldn't find serviceAccountKey.json in this folder.\n\n" +
+    "Get one from: Firebase Console -> Project settings -> Service accounts\n" +
+    "-> Generate new private key -> save the downloaded file here as\n" +
+    "serviceAccountKey.json (it's already in .gitignore, never commit it)."
+  );
+  process.exit(1);
+}
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+initializeApp({ credential: cert(serviceAccount) });
+const db = getFirestore();
 
 async function run() {
-  const q = query(collection(db, "resources"), where("source", "==", "seed"));
-  const snapshot = await getDocs(q);
+  const snapshot = await db.collection("resources").where("source", "==", "seed").get();
   console.log(`Found ${snapshot.size} seed entries to delete...`);
 
+  const docs = snapshot.docs;
+  const batchSize = 400; // Firestore batch writes cap at 500 operations
   let count = 0;
-  for (const docSnap of snapshot.docs) {
-    await deleteDoc(docSnap.ref);
-    count++;
-    if (count % 50 === 0) console.log(`  deleted ${count}...`);
+  for (let i = 0; i < docs.length; i += batchSize) {
+    const batch = db.batch();
+    const chunk = docs.slice(i, i + batchSize);
+    for (const doc of chunk) {
+      batch.delete(doc.ref);
+      count++;
+    }
+    await batch.commit();
+    console.log(`  deleted ${count}/${docs.length}...`);
   }
 
   console.log(`Done. Deleted ${count} seed entries. User-submitted entries were left untouched.`);
